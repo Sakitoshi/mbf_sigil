@@ -13,6 +13,9 @@ RM = del
 #CP = copy /y (/y does not work in XP)
 CP = copy 
 
+# the command to create folders
+MD = mkdir
+
 # options common to all builds
 #CFLAGS_COMMON = -Wall
 CFLAGS_COMMON = -Wall -Winline -Wno-parentheses
@@ -137,8 +140,11 @@ OBJS=	\
         $(O)/d_deh.o	    \
  	$(O)/emu8kmid.o	    
 
-doom all: $(O)/mbf.exe
+doom all: $(O) $(O)/mbf.exe
 	$(CP) $(O)\mbf.exe .
+
+$(O):
+	$(MD) $(O)
 
 release: clean
 	$(RM) tranmap.dat
