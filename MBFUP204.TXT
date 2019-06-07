@@ -1,0 +1,212 @@
+-- DOOM 'MBF' VERSION HISTORY --
+
+Major Credits:
+
+1) Doom is a 1993 science fiction horror-themed first-person shooter (FPS) video game by id Software.
+Engine Programming was done mainly by John Carmack.
+The Doom source code was released December 23, 1997
+(Linux port, without DMX sound library and original Mode-X planar graphics routines).
+
+2) Boom is a source port created by TeamTNT. The design goals of the Boom project were to create
+a source port of professional quality, fix bugs and remove limitations of vanilla Doom, and add
+extra editing features, while keeping the same "feel" and "spirit" of the original Doom engine.
+The final version of Boom was released on October 22, 1998. (v2.02)
+
+3) MBF (Marine's Best Friend) is a source port created by Lee Killough after he left the Boom team.
+It is regarded by some as Boom's successor. As with Boom, MBF was limited to running under MS-DOS.
+MBF was relicensed under the GNU GPL. Latest MBF source and executable release by Killough is v2.03
+from 1/8/1999.
+
+Minor Credits:
+
+4) Simon Howard 'Fraggle' worked on the above sourcecode in 2000, and offers it as mbf-with-fixes,
+albeit without a compiled executable.
+It includes License change to the GPL, some bug fixes and compilation fixes under later versions of Allegro.
+-bug with 3key doors! (p_spec.c)
+-blur effect fix (r_draw.c)
+-stereo fix for allegro v3.12 (i_sound.c)
+-bugfixes from lxdoom (z_zone.c) (VM block size bug/Memory wastage/...)
+-fix asm (m_fixed.h / r_things.c) (GB 2014: now overwritten with julian's fixes)
+
+
+5) Gerwin ("GB") worked on mbf-with-fixes
+http://members.quicknet.nl/lm.broers/
+
+2013:
+- Version changed to 2.04.
+- Integrated Julian's compiler fix from Eternity Engine v3.33.02, as described on 06/12/01,
+  including a new local allegro.h. (not yet including the inline ASM fixes)
+- use param -ssg to enable supershotgun from doom2 in doom1, Requires ssg.wad resources.
+- game automatically looks in the \iwad subfolder, when no iwad found in base directory. (d_main.c)
+- The game+setup is compiled with a modded Allegro 3.00 Sound Blaster 2.0/Pro driver.
+  Consisting of a sample rate fix for Sound Blaster Pro Compatible Sound Cards, such as the Crystal CS4232,
+  which does not accept a DSP request for over 43478Hz in SB Pro emulation mode.
+  At startup it also flushes DMA transfers that may still be pending.
+
+2014:
+- startup console now resembles the original look, with colored title bar (d_main.c).
+- startup console lists wads and sound devices in more bright text (w_wad.c) (i_sound.c)
+- compiler check in i_sound.c for allegro version: either 3.00 or later. (still no proper game exit with 3.12...)
+- display sound and music device in startup console (i_sound.c)
+- Changed Mode-X to flip between 2 pages instead of rotating between 4 pages. for next point:
+- Added Dirty/Clean check to only transfer the full Statusbar to the video memory when necessary. Small FPS gain. (i_video.c)
+- Added doomu.wad to iwad list (d_main.c).
+- Safe mode invoked whe Windows NT OS is detected (d_main.c). See -safe parameter.
+- Doom version 1.2 demo compatibility (from PrBoom+).
+- Proper detection and selection of when to use VESA Banked or LFB access.
+- Alternate hi-res blitting for modern ATI/AMD video cards.
+- Automatic 640x480 video mode fallback when 640x400 is not avialable.
+- option to show the framerate on the top right, obviously capped at 35 max. (mostly i_video.c).
+  will now also show the video mode driver on the top left, whenever it is switched.
+
+General bugfixes which have been found and documented by other people in the past:
+- Poor memory scanning bugfix from PrBoom (z_zone.c)
+- Format string bugfix from PrBoom (d_deh.c / i_main.c)
+- Spawned monsters respawn at 0,0 bugfix (p_mobj.c)
+- Demo Compatibility bugfix in T_MovePlane from PrBoom (p_floor.c), but with P_CheckSector.
+- Demo Compatibility bugfix in P_CheckSight and P_CrossSubsector from PrBoom (p_sight.c)
+- Demo Compatibility bugfix in P_SlideMove (p_map.c)
+- Demo Compatibility bugfix in "Overlapping uses of global variables" (p_map.c)
+- Demo Compatibility bugfix "MBF player bobbing rewrite causes demo sync problems" (p_user.c)
+- Bugfix "DR doors corrupt other actions" (p_doors.c)
+- Doom v1.2 Demo compatibility from PrBoom, all Credits to the PrBoom author(s)
+  (g_game.c, p_enemy.c, p_floor.c, p_inter.c, p_map.c, pmaputl.c+.h, p_sight.c, p_spec.c)
+- for upload no. 004: eternity fix; must check fileout for validity (d_deh.c)
+
+Compiler Compatibility (GCC 4)
+- Integrated Julian's fix from Eternity Engine v3.33.02, as described on 06/12/01:
+  "fixes to the inline assembly in m_fixed.h and r_things.c that remove actual bugs in Killough's code,
+  and also enable compilation on GCC 2.95.* and later. Unlike the lxdoom code, Julian's code does not
+  seem to break wall sliding or any other game engine behaviors." (m_fixed.h / r_things.c)
+- Changed wrong predefenition (p_spec.h): int EV_DoElevator ( line_t* line, elevator_e    elevtype );
+- Commented out 5x useless and conflicting predefenitions (r_bsp.h)
+- haleyjd: syntax fix in EV_DoGenCeiling (p_genlin.c)
+- Commented out 2x useless and conflicting predefenitions (p_mobj.h)
+- Found culprit of -O2 / -O3 Floating point errors: FixedDiv (m_fixed.h). Boom's FixedDiv is OK.
+- Removed unused 'Secnum' from p_doors, and 'cheatstate' from am_map.c, and 'length' from g_game.c
+  and 'episode' from p_spec.c and 'lh' from wi_stuff.c
+- added (char *) typecast to variables in string handling routines (g_game.c)
+- added (byte *) typecast to variables (d_net.c)
+- added (char *) typecast to variables (d_deh.c)
+- added string.h to emu8kmid.c
+- Restored ability to compile without DOGS feature, m_menu.c d_main.c. Game only gets slower without options?
+For upload no. 004:
+- fixed compiler warning "++eventtail" undefined (d_net.c)
+- fixed 4x compiler warnings, dereference pionters for sizeof (g_game.c)
+- register heightmask changed to register int heightmask (r_draw.c))
+- changed *src++; to ++src; (w_wad.c)
+- Replaced m_fixed.h with the one from SMMU, old one tended to give 'Floating point errors' when using compiler optimizations
+- Found and fixed serious bug concerning in_graphics_mode vs. disk_flash_icon. This bug surfaced when using GCC 2.9+
+
+New startup parameters (2014):
+-noasm    To use the C column+span drawing functions instead of the assembler ones: faster on some systems. (r_plane.c,r_segs.c,r_draw.h,r_draw.c,r_things.c)
+-noasmx   For new C transfer routine of buffer to Mode-X planar screen. (mostly i_video.c)
+-asmp6    To force use of ASM Pentium Pro transfer routine of buffer to Mode-X planar screen. (mostly i_video.c)
+-nolfb    To prevent Linear frame buffer mode when using 640x400. Initially the game did not detect when to use VESA Banked or LFB. (mostly i_video.c)
+-safe     Does not use nearpointer VGA access, Does not allow video mode-X (through not allowing page flipping option). Shows video mode driver on the top left, whenever it is switched.
+-stdvid   Basic video settings 320x200; Mode 13h or VESA equivalent.
+-bestvid  Best Quality video settings; High resolution etc.
+-unlock   Unlocks the protection that prevents mods to load with a shareware Doom iwad
+-nopm     Do not use Protected Mode bankswitching and pageflip in VESA video modes. Use real mode VBE 1.0 routines instead.
+-lowdet   Low Detail Mode, rendering half the horizontal resolution (2015)
+-noDehWad Do not load Dehacked lumps found inside WADs (2015) 
+
+V2.04 Release History
+Upload no. 002: 2014-09-24 v2.04 had broken the savegame functionality, now fixed (g_game.c)
+Upload no. 003: 2014-09-27 replaced SHLDL instructions, as done in Duke3D / Doom Legacy. Gives 20% more FPS on Pentiums. (drawspan.s)
+Upload no. 004: 2014-10-05 
+                Now reliable results when using the latest DJGPP+GCC
+                (This does require a more recent version of cwsdmpi.exe, and in windows 95/98 DPMI memory has to be set manually)
+                Most if not all video access rewritten, added i_vgavbe.c, Video access now totally independant of Allegro
+		(Display of the Disk Icon on the bottom right is currently disabled)
+		Added 320x200 VESA mode support, replaces mode 13h+X when suitable
+		Added: Hold Shift at startup to remain at bootup console
+		Removed "number of player corpses option" as it was reported to cause network desyncs when changed
+		Compiled with an allegro without hi-color mode support, also compiled without the Allegro Graphics drivers
+Upload no. 005: 2014-10-06 
+                Rewrote VESA page flipping and vsync, as Nvidia cards malfunctioned before
+                Screen should shake a little when enabling page-flipping
+		Vesa version now shown in mode string
+Upload no. 006: Bugfix for 640x480 pageflipped which got broken, also added clearscreen beforehand.
+                Fixed the pageflipping routine for NVidia cards.
+                Switching into of mode-X got slightly broken, now fixed
+                Made video modes + options selection and handling more resilient
+		Added a message when video options are not available
+		Removed translucency percentage option from the main screen to make room
+Upload no. 007: 2014-10-13 
+                Added Protected Mode bankswitching and pageflip routines (VBE 2.0). Frame rate increase is not impressive...
+                Introduced parameter: -nopm.
+		Fixed a bug where the frame rate counter messed up a variable from the the timedemo measurement.
+                Intel GMA specific: LFB mode blank-screen procedure for intel graphics, as banked functions do not work in LFB mode!?
+		 (note on intel GMA graphics: page flipping in windows XP will not really work, but it works fine in DOS)
+		Centered the screen in 640x480 LFB mode
+                Vesa modes now intialized with the LFB bit set (worked without though)
+		Replaced conio.h with gppconio.h
+Upload no. 008: 2014-10-19 
+                Rewrote shift=pause at startup console
+                Compiled allegro with bugfix in adlib driver (in fm_set_pitch), FM timbres now sound a lot better
+		Compiled allegro with the doom 1 GB FM timbres as build-in default. Drums have not been replaced (yet)
+		When using a Doom2 based iwad FM timbre file MBF_D2GM.IBK is loaded, which has a few modified instruments
+		Themed setup.exe, and allegro.cfg is now replaced with setup.cfg
+Upload no. 009: 2014-10-25 
+                Modified adlib driver again: added Doom timbres for percussion. Now uses MUSlib lookup tables.
+		Improved look of setup.exe.
+Upload no. 010: 2015-10-13
+                Added -lowdet parameter to invoke low detail graphics: rendering half the horizontal resolution.
+                This should give about 10% more frames per sec.
+                (The low detail drawcol and drawspan are only in C code, not in hand crafted asm)
+		Now compiled with gcc493
+		Renamed dprintf to dmprintf, for DJGPP 2.05 compatibility.
+Upload no. 011: 2015-12-26 
+                Added -noDehWad parameter to not load Dehacked lumps found inside WADs (d_main.c) 
+                Again Rewrote shift=pause at startup console, as to disregard CapsLock.
+Upload no. 012: 2016-01-04 
+                Added 'Windows Sound System' (WSS) Digital Sound Driver: 16 bit Stereo, up to 44100 Hz.
+		As the game currently does not obey setup.cfg, use the ULTRA16 environment variable to pass the details:
+		For example "SET ULTRA16=530,1,7" for IO=0x530, DMA=1, IRQ=7. 
+		This is digital driver number 7 in the game config. Tested with CS4232 SoundCard.
+Upload no. 013: 2016-01-23 
+                Removed MBF internal sound driver selection entirely. It now always loads setup.cfg settings. 
+		The settings screen now displays the Sound and Music driver, with sufficent detail.
+		Tweaked WSS sound driver. 
+		Restyled setup.exe dialogs a little. Replaced the setup.exe font.
+Upload no. 014: 2016-01-31 (C)
+                Backported Allegro 3.12 ESS Audiodrive Sound Driver. Tested OK.
+                Backported Allegro 3.12 Ensoniq Soundscape Sound Driver. Unable to test.
+		Added Gus PnP (InterWave) Sound driver. Tested OK. Actually already worked with WSS driver.
+		Note that the GUS PnP Music interface is not included.
+		Changed WSS environment variable, example: SET WSS=A530 I7 D1
+                GUS PnP now uses the ULTRA16 environment variable, example (6=dma/5=irq): SET ULTRA16=34C,6,5 
+		Improved WSS driver.
+		Reverted back to 1997 Compiler software.
+Upload no. 015: 2017-07-03 
+                Reverted 'sizeof' changes in g_game.c, as it broke storage of the leveltime in savegames.
+		(Verified that 1999 format savegames can still be loaded by this version)
+Upload no. 016: 2017-08-28
+                -Made changes in WSS.C sound driver, to prevent tweaks meant for CS4232 sound chip being applied
+		to a similar OPL3SAx sound chip. Also disabled one tweak entirely for all WSS cards.
+                -Made changes in MPU.C music driver, to prevent lockup when using the older SB16 MPU together with
+		SB16 Digital section. Also made this driver follow the guidelines better, with more status checks.
+Upload no. 017: 2017-08-28
+                Setup.exe: Scrolling font spacing fix. 
+		Stereo no longer reversed in relation to setup ('sep' in i_sound.c). 
+Upload no. 018: 2017-09-04
+                -Setup.exe: Display detected DSP version for Sound Blaster cards.
+		-Sound Blaster Pro driver reverses back the reversed stereo of the hardware (allegro: sound.c + sb.c). 
+                -Made changes in SB.C digital sound driver, mainly to handle unexpected MPU-401 interrupts with SB16.
+                -Setup.exe: bugfix: 22 kHz sample rate was not properly selectable in the dialog.
+Upload no. 019: 2017-09-10
+                -Fix in GUS-PnP driver detection routine, as it messed up the WSS driver in PCem v12.
+                -More consistency between SB16, WSS and GUS-PnP drivers.
+                -Increasedd DMA buffer size on SB16 sound hardware, to minimize Midi problems;
+                 4096kB for SB16 DSP v4.11, 4.12, 4.13 / 2048kB for other SB16s.
+                -Fixed sb.c regarding differences between SB 1.0, SB 1.5 and SB 2.0. Improved setup description.
+                -Adlib/OPL driver; fix to prevent it probing an Ultrasound port and messing up the codec.
+                -Setup.c fixed bug where Frequency listbox would not display previously selected frequency.
+                -Setup.c test dialog: drops stereo test buttons when a mono soundcard is selected.
+                -Setup.c test dialog: Test of Digi/Midi/FM will now output correct volume, when a volume is set.
+                -Setup.c test dialog: Raised sound volumes of Digi/Midi/FM in case volume is not specified (-1).
+
+2019:
+- Added full support for episode 5: Sigil.
+- Sound card settings are read from allegro.cfg again.
