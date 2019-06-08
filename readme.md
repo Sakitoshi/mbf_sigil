@@ -1,6 +1,6 @@
 ### DOOM 'Marine's Best Friend' with Sigil support
 
-![alt_text](https://raw.githubusercontent.com/Sakitoshi/mbf_sigil/master/DOCS/mbf_sigil.png)
+![alt_text](https://raw.githubusercontent.com/Sakitoshi/mbf_sigil/master/docs/mbf_sigil.png)
 
 This is MBF modified to accomodate Sigil as a proper 5th episode.
 I got the source code from [here](https://www.vogons.org/viewtopic.php?f=24&t=40857) and ported the changes from [libretro-prboom](https://github.com/libretro/libretro-prboom) (pull requests 88 to 90)
