@@ -1060,7 +1060,7 @@ extern char *bgflatE2;
 extern char *bgflatE3;
 // char*        bgflatE4 = "MFLR8_3";
 extern char *bgflatE4;
-// char*        bgflatE5 = "FLOOR4_8";
+// char*        bgflatE5 = "FLOOR7_2";
 extern char *bgflatE5;
 
 // char*        bgflat06 = "SLIME16";
