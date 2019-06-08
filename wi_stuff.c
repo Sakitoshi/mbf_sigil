@@ -1796,6 +1796,15 @@ void WI_DrawBackground(void)
   else 
     sprintf(name, "WIMAP%d", wbs->epsd);
 
+  if (W_CheckNumForName(name) == -1) {
+    if ((wbs->epsd == 4) && (W_CheckNumForName("SIGILINT") != -1))
+      // SIGIL support
+      strcpy(name, "SIGILINT");
+    else
+      // default intermission for extra custom episodes
+      strcpy(name, "INTERPIC");
+  }
+
   // background
   bg = W_CacheLumpName(name, PU_CACHE);    
   V_DrawPatch(0, 0, 1, bg);
