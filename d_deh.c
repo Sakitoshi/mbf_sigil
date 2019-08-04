@@ -257,6 +257,15 @@ char *s_HUSTR_29    = HUSTR_29;
 char *s_HUSTR_30    = HUSTR_30;
 char *s_HUSTR_31    = HUSTR_31;
 char *s_HUSTR_32    = HUSTR_32;
+char *s_NHUSTR_1    = NHUSTR_1;
+char *s_NHUSTR_2    = NHUSTR_2;
+char *s_NHUSTR_3    = NHUSTR_3;
+char *s_NHUSTR_4    = NHUSTR_4;
+char *s_NHUSTR_5    = NHUSTR_5;
+char *s_NHUSTR_6    = NHUSTR_6;
+char *s_NHUSTR_7    = NHUSTR_7;
+char *s_NHUSTR_8    = NHUSTR_8;
+char *s_NHUSTR_9    = NHUSTR_9;
 char *s_PHUSTR_1    = PHUSTR_1;
 char *s_PHUSTR_2    = PHUSTR_2;
 char *s_PHUSTR_3    = PHUSTR_3;
@@ -376,6 +385,7 @@ char *s_C3TEXT     = C3TEXT;
 char *s_C4TEXT     = C4TEXT;
 char *s_C5TEXT     = C5TEXT;
 char *s_C6TEXT     = C6TEXT;
+char *s_NERVETEXT  = NERVETEXT;
 char *s_P1TEXT     = P1TEXT;
 char *s_P2TEXT     = P2TEXT;
 char *s_P3TEXT     = P3TEXT;
@@ -602,6 +612,15 @@ deh_strs deh_strlookup[] = {
   {&s_HUSTR_30,"HUSTR_30"},
   {&s_HUSTR_31,"HUSTR_31"},
   {&s_HUSTR_32,"HUSTR_32"},
+  {&s_NHUSTR_1,"NHUSTR_1"},
+  {&s_NHUSTR_2,"NHUSTR_2"},
+  {&s_NHUSTR_3,"NHUSTR_3"},
+  {&s_NHUSTR_4,"NHUSTR_4"},
+  {&s_NHUSTR_5,"NHUSTR_5"},
+  {&s_NHUSTR_6,"NHUSTR_6"},
+  {&s_NHUSTR_7,"NHUSTR_7"},
+  {&s_NHUSTR_8,"NHUSTR_8"},
+  {&s_NHUSTR_9,"NHUSTR_9"},
   {&s_PHUSTR_1,"PHUSTR_1"},
   {&s_PHUSTR_2,"PHUSTR_2"},
   {&s_PHUSTR_3,"PHUSTR_3"},
@@ -721,6 +740,7 @@ deh_strs deh_strlookup[] = {
   {&s_C4TEXT,"C4TEXT"},
   {&s_C5TEXT,"C5TEXT"},
   {&s_C6TEXT,"C6TEXT"},
+  {&s_NERVETEXT,"NERVETEXT"},
   {&s_P1TEXT,"P1TEXT"},
   {&s_P2TEXT,"P2TEXT"},
   {&s_P3TEXT,"P3TEXT"},
@@ -876,6 +896,20 @@ char **mapnames2[] = // DOOM 2 map names.
   &s_HUSTR_30,
   &s_HUSTR_31,
   &s_HUSTR_32,
+};
+
+
+char **mapnamesn[] = // NERVE WAD map names.
+{
+  &s_NHUSTR_1,
+  &s_NHUSTR_2,
+  &s_NHUSTR_3,
+  &s_NHUSTR_4,
+  &s_NHUSTR_5,
+  &s_NHUSTR_6,
+  &s_NHUSTR_7,
+  &s_NHUSTR_8,
+  &s_NHUSTR_9,
 };
 
 

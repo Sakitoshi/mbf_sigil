@@ -502,7 +502,32 @@ void S_Start(void)
     mnum = idmusnum; //jff 3/17/98 reload IDMUS music if not -1
   else
     if (gamemode == commercial)
-      mnum = mus_runnin + gamemap - 1;
+      if (gamemission == pack_nerve)
+        switch(gamemap)
+          {
+          case 1:
+            mnum = mus_messag; break;
+          case 2:
+            mnum = mus_ddtblu; break;
+          case 3:
+            mnum = mus_doom; break;
+          case 4:
+            mnum = mus_shawn; break;
+          case 5:
+            mnum = mus_in_cit; break;
+          //case 6: // it is the same in doom2
+          //  mnum = mus_the_da; break;
+          case 7:
+            mnum = mus_in_cit; break;
+          case 8:
+            mnum = mus_shawn2; break;
+          case 9:
+            mnum = mus_ddtbl2;
+          default:
+            mnum = mus_runnin + gamemap - 1;
+          }
+      else
+        mnum = mus_runnin + gamemap - 1;
     else
       mnum = mus_e1m1 + (gameepisode-1)*9 + gamemap-1;
 

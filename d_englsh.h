@@ -244,6 +244,16 @@
 #define HUSTR_31    "level 31: wolfenstein"
 #define HUSTR_32    "level 32: grosse"
 
+#define NHUSTR_1    "level 1: the earth base"
+#define NHUSTR_2    "level 2: the pain labs"
+#define NHUSTR_3    "level 3: canyon of the dead"
+#define NHUSTR_4    "level 4: hell mountain"
+#define NHUSTR_5    "level 5: vivisection"
+#define NHUSTR_6    "level 6: inferno of blood"
+#define NHUSTR_7    "level 7: baron's banquet"
+#define NHUSTR_8    "level 8: tomb of malevolence"
+#define NHUSTR_9    "level 9: march of the demons"
+
 #define PHUSTR_1    "level 1: congo"
 #define PHUSTR_2    "level 2: well of souls"
 #define PHUSTR_3    "level 3: aztec"
@@ -568,6 +578,29 @@
   "SUPER SECRET LEVEL!  YOU'D BETTER\n"\
   "BLAZE THROUGH THIS ONE!\n"
   
+  
+// No Rest For The Living end:
+  
+#define NERVETEXT \
+  "Trouble was brewing again in your favorite\n"\
+  "vacation spot... Hell. Some Cyberdemon\n"\
+  "punk thought he could turn Hell into a\n"\
+  "personal amusement park; and make Earth\n"\
+  "the ticket booth.\n"\
+  "\n"\
+  "Well; that half-robot freak show didn't\n"\
+  "know who was coming to the fair. There's\n"\
+  "nothing like a shooting gallery full of\n"\
+  "hellspawn to get the blood pumping...\n"\
+  "\n"\
+  "Now the walls of the demon's labyrinth\n"\
+  "echo with the sound of his metallic limbs\n"\
+  "hitting the floor. His death moan gurgles\n"\
+  "out through the mess you left of his face.\n"\
+  "\n"\
+  "This ride is closed."
+  
+  
 // after map 06 
   
   #define P1TEXT  \
@@ -712,9 +745,9 @@
   "\n"\
   "As you step off the transport, you hear\n"\
   "the stomp of a cyberdemon's iron shoe."
-
-
-
+  
+  
+  
 //
 // Character cast strings F_FINALE.C
 //

@@ -413,6 +413,25 @@ extern char *s_HUSTR_31; // = HUSTR_31;
 //#define HUSTR_32      "level 32: grosse"
 extern char *s_HUSTR_32; // = HUSTR_32;
 
+//#define NHUSTR_1      "level 1: the earth base"
+extern char *s_NHUSTR_1; // = NHUSTR_1;
+//#define NHUSTR_2      "level 2: the pain labs"
+extern char *s_NHUSTR_2; // = NHUSTR_2;
+//#define NHUSTR_3      "level 3: canyon of the dead"
+extern char *s_NHUSTR_3; // = NHUSTR_3;
+//#define NHUSTR_4      "level 4: hell mountain"
+extern char *s_NHUSTR_4; // = NHUSTR_4;
+//#define NHUSTR_5      "level 5: vivisection"
+extern char *s_NHUSTR_5; // = NHUSTR_5;
+//#define NHUSTR_6      "level 6: inferno of blood"
+extern char *s_NHUSTR_6; // = NHUSTR_6;
+//#define NHUSTR_7      "level 7: baron's banquet"
+extern char *s_NHUSTR_7; // = NHUSTR_7;
+//#define NHUSTR_8      "level 8: tomb of malevolence"
+extern char *s_NHUSTR_8; // = NHUSTR_8;
+//#define NHUSTR_9      "level 9: march of the demons"
+extern char *s_NHUSTR_9; // = NHUSTR_9;
+
 //#define PHUSTR_1      "level 1: congo"
 extern char *s_PHUSTR_1; // = PHUSTR_1;
 //#define PHUSTR_2      "level 2: well of souls"
@@ -855,6 +874,30 @@ extern char *s_C5TEXT; // = C5TEXT;
 //"SUPER SECRET LEVEL!  YOU'D BETTER\n"
 //"BLAZE THROUGH THIS ONE!\n"
 extern char *s_C6TEXT; // = C6TEXT;
+
+
+// No Rest For The Living end:
+  
+//#define NERVETEXT
+//"Trouble was brewing again in your favorite\n"
+//"vacation spot... Hell. Some Cyberdemon\n"
+//"punk thought he could turn Hell into a\n"
+//"personal amusement park; and make Earth\n"
+//"the ticket booth.\n"
+//"\n"
+//"Well; that half-robot freak show didn't\n"
+//"know who was coming to the fair. There's\n"
+//"nothing like a shooting gallery full of\n"
+//"hellspawn to get the blood pumping...\n"
+//"\n"
+//"Now the walls of the demon's labyrinth\n"
+//"echo with the sound of his metallic limbs\n"
+//"hitting the floor. His death moan gurgles\n"
+//"out through the mess you left of his face.\n"
+//"\n"
+//"This ride is closed."
+extern char *s_NERVETEXT; // = NERVETEXT;
+
 
 // after map 06 
 

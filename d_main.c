@@ -38,7 +38,7 @@ static const char rcsid[] = "$Id: d_main.c,v 1.3 2000-08-12 21:29:25 fraggle Exp
 #include <sys/nearptr.h>  // needed for __djgpp_nearptr_enable() -- stan 
 #include <dos.h>          // GB 2014, for get dos version (and delay)
 
-//#include "doomdef.h"    // GB 2014 not needed here
+#include "doomdef.h"    // GB 2014 not needed here. Sakitoshi 2019 needed now :)
 #include "doomstat.h"
 #include "dstrings.h"
 //#include "sounds.h"     // GB 2014 not needed here
@@ -531,7 +531,7 @@ static char title[128];
 // killough 11/98: remove limit on number of files
 //
 
-void D_AddFile(char *file)
+void D_AddFile(const char *file)
 {
   static int numwadfiles, numwadfiles_alloc;
 
@@ -593,7 +593,7 @@ char *D_DoomExeName(void)
 
 static void CheckIWAD(const char *iwadname,
                       GameMode_t *gmode,
-                      GameMission_t *gmission,  // joel 10/17/98 Final DOOM fix
+                      //GameMission_t *gmission,  // joel 10/17/98 Final DOOM fix
                       boolean *hassec)
 {
   FILE *fp = fopen(iwadname, "rb");
@@ -628,16 +628,67 @@ static void CheckIWAD(const char *iwadname,
 
   fclose(fp);
 
-  *gmission = doom;
+  //*gmission = doom;
   *hassec = false;
   *gmode =
-    cm >= 30 ? (*gmission = tnt >= 4 ? pack_tnt :
+    /*cm >= 30 ? (*gmission = tnt >= 4 ? pack_tnt :
                 plut >= 8 ? pack_plut : doom2,
-                *hassec = sc >= 2, commercial) :
+                *hassec = sc >= 2, commercial) :*/
+    cm >= 30 ? (*hassec = sc >= 2, commercial) :
     ud >= 9 ? retail :
     rg >= 18 ? registered :
     sw >= 9 ? shareware :
     indetermined;
+}
+
+//
+// AddIWAD
+//
+void AddIWAD(const char *iwad)
+{
+  size_t i;
+
+  if (!(iwad && *iwad))
+    return;
+
+  //jff 9/3/98 use logical output routine.
+  //Sakitoshi 2019 not implemented, so using regular printf.
+  printf("IWAD found: %s\n",iwad); //jff 4/20/98 print only if found
+  CheckIWAD(iwad,&gamemode,&haswolflevels);
+
+  /* jff 8/23/98 set gamemission global appropriately in all cases
+  * cphipps 12/1999 - no version output here, leave that to the caller
+  */
+  i = strlen(iwad);
+  switch(gamemode)
+  {
+  case retail:
+  case registered:
+  case shareware:
+    gamemission = doom;
+    //if (i>=8 && !strnicmp(iwad+i-8,"chex.wad",8))
+    //  gamemission = chex;
+    break;
+  case commercial:
+    gamemission = doom2;
+    if (i>=10 && !strnicmp(iwad+i-10,"doom2f.wad",10))
+      language=french;
+    else if (i>=7 && !strnicmp(iwad+i-7,"tnt.wad",7))
+      gamemission = pack_tnt;
+    else if (i>=12 && !strnicmp(iwad+i-12,"plutonia.wad",12))
+      gamemission = pack_plut;
+    //else if (i>=8 && !strnicmp(iwad+i-8,"hacx.wad",8))
+    //  gamemission = hacx;
+    break;
+  default:
+    gamemission = none;
+    break;
+  }
+  if (gamemode == indetermined)
+    //jff 9/3/98 use logical output routine
+    //Sakitoshi 2019 not implemented, so using regular printf.
+    printf("Unknown Game Version, may not work\n");
+  D_AddFile(iwad);
 }
 
 // jff 4/19/98 Add routine to check a pathname for existence as
@@ -892,10 +943,10 @@ void IdentifyVersion (void)
   if (iwad && *iwad)
     {
       printf("IWAD found: %s\n",iwad); //jff 4/20/98 print only if found
-
-      CheckIWAD(iwad,
+      AddIWAD(iwad);
+      /*CheckIWAD(iwad,
                 &gamemode,
-                &gamemission,   // joel 10/16/98 gamemission added
+                //&gamemission,   // joel 10/16/98 gamemission added
                 &haswolflevels);
 
       switch(gamemode)
@@ -948,7 +999,7 @@ void IdentifyVersion (void)
       if (gamemode == indetermined)
         puts("Unknown Game Version, may not work");  // killough 8/8/98
 
-      D_AddFile(iwad);
+      D_AddFile(iwad);*/
     }
   else
     I_Error("IWAD not found\n");
@@ -1236,6 +1287,31 @@ void D_DoomMain(void)
        if (M_CheckParm ("-altdeath"))   deathmatch = 2;
   else if (M_CheckParm ("-deathmatch")) deathmatch = 1;
 
+  // add any files specified on the command line with -file wadfile
+  // to the wad list
+
+  // killough 1/31/98, 5/2/98: reload hack removed, -wart same as -warp now.
+
+  if ((p = M_CheckParm ("-file")))
+    {
+      // the parms after p are wadfile/lump names,
+      // until end of parms or another - preceded parm
+      // killough 11/98: allow multiple -file parameters
+
+      boolean file = modifiedgame = true;            // homebrew levels
+      while (++p < myargc)
+	{
+	  if (*myargv[p] == '-')
+	    file = !strcasecmp(myargv[p],"-file");
+	  else if (file)
+          {
+          if (strcmp(myargv[p],"nerve.wad") != -1)
+            gamemission = pack_nerve;
+	      D_AddFile(myargv[p]);
+          }
+	}
+    }
+
   // GB 2014: colored title like original doom, requires conio.h
   clrscr();
   textbackground(LIGHTGRAY); textcolor(RED);  // default v1.9 colors
@@ -1264,6 +1340,13 @@ void D_DoomMain(void)
     case commercial:
       switch (gamemission)      // joel 10/16/98 Final DOOM fix
         {
+        case pack_nerve:
+          sprintf (title,
+               "                    DOOM 2: No Rest For The Living v%i.%02i                        ",
+               VERSION/100,VERSION%100);
+          textbackground(RED); textcolor(WHITE);  
+          break;
+
         case pack_plut:
           sprintf (title,
                "                      DOOM 2: Plutonia Experiment v%i.%02i                         ",
@@ -1345,27 +1428,6 @@ void D_DoomMain(void)
       D_AddFile(s);
     }
 #endif
-
-  // add any files specified on the command line with -file wadfile
-  // to the wad list
-
-  // killough 1/31/98, 5/2/98: reload hack removed, -wart same as -warp now.
-
-  if ((p = M_CheckParm ("-file")))
-    {
-      // the parms after p are wadfile/lump names,
-      // until end of parms or another - preceded parm
-      // killough 11/98: allow multiple -file parameters
-
-      boolean file = modifiedgame = true;            // homebrew levels
-      while (++p < myargc)
-	{
-	  if (*myargv[p] == '-')
-	    file = !strcasecmp(myargv[p],"-file");
-	  else if (file)
-	      D_AddFile(myargv[p]);
-	}
-    }
 
   if (!(p = M_CheckParm("-playdemo")) || p >= myargc-1)    // killough
     {

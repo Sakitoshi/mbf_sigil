@@ -950,6 +950,9 @@ static void WI_drawShowNextLoc(void)
         WI_drawOnLnode(wbs->next, yah); 
     }
 
+  if (gamemission == pack_nerve && wbs->last == 7)
+    return; // MAP08 end game
+
   // draws which level you are entering..
   if ( (gamemode != commercial)
        || wbs->next != 30)  // check for MAP30 end game
@@ -1695,8 +1698,8 @@ static void WI_drawStats(void)
   // killough 2/22/98: skip drawing par times on pwads
   // Ty 03/17/98: unless pars changed with deh patch
 
-  if (!modifiedgame || deh_pars)
-    if (wbs->epsd < 3)
+  if (!modifiedgame || deh_pars || gamemission==pack_nerve)
+    if (wbs->epsd < 4)
       {
 	V_DrawPatch(SCREENWIDTH/2 + SP_TIMEX, SP_TIMEY, FB, par);
 	WI_drawTime(SCREENWIDTH - SP_TIMEX, SP_TIMEY, cnt_par);

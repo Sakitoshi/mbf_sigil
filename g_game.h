@@ -150,6 +150,7 @@ extern int  bodyquesize, default_bodyquesize; // killough 2/8/98, 10/98
 // Par times (new item with BOOM) - from g_game.c
 extern int pars[][10];  // hardcoded array size
 extern int cpars[];     // hardcoded array size
+extern int npars[];     // hardcoded array size
 
 #endif
 

@@ -826,6 +826,9 @@ static void G_DoCompleted(void)
             wminfo.next = 30; break;
           case 31:
             wminfo.next = 31; break;
+          case 4:
+            if (gamemission == pack_nerve)
+              wminfo.next = 8;
           }
       else
         switch(gamemap)
@@ -836,6 +839,8 @@ static void G_DoCompleted(void)
           default:
             wminfo.next = gamemap;
           }
+        if (gamemission == pack_nerve && gamemap == 9)
+          wminfo.next = 4;
     }
   else
     {
@@ -874,7 +879,10 @@ static void G_DoCompleted(void)
   wminfo.maxfrags = 0;
 
   if ( gamemode == commercial )
-    wminfo.partime = TICRATE*cpars[gamemap-1];
+    if ( gamemission == pack_nerve )
+      wminfo.partime = TICRATE*npars[gamemap-1];
+    else
+      wminfo.partime = TICRATE*cpars[gamemap-1];
   else
     wminfo.partime = TICRATE*pars[gameepisode][gamemap];
 
@@ -1796,6 +1804,11 @@ int cpars[34] = {
   120,30,30,30          // 31-34
 };
 
+// No Rest For The Living Par Times
+int npars[9] = {
+  75,105,120,105,210,105,165,105,135
+};
+
 //
 // G_WorldDone
 //
@@ -1811,11 +1824,16 @@ void G_WorldDone(void)
     {
       switch (gamemap)
         {
+        case 8:
+          if (gamemission == pack_nerve)
+            F_StartFinale(); break;
         case 15:
         case 31:
           if (!secretexit)
             break;
         case 6:
+          if (gamemission == pack_nerve)
+            break;
         case 11:
         case 20:
         case 30:

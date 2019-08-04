@@ -451,7 +451,8 @@ char buf[3];
       (gamemode == retail     && (epsd > 4 + modifiedgame || map > 9  )) || // allow fifth episode if pwad detected for sigil.
       (gamemode == registered && (epsd > 3 || map > 9  )) ||
       (gamemode == shareware  && (epsd > 1 || map > 9  )) ||
-      (gamemode == commercial && (epsd > 1 || map > 32 )) )
+      (gamemode == commercial && (epsd > 1 || map > 32 )) ||
+      (gamemission == pack_nerve && (epsd > 1 || map > 9 )) )
     return;
 
   // So be it.
