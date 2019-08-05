@@ -1305,7 +1305,7 @@ void D_DoomMain(void)
 	    file = !strcasecmp(myargv[p],"-file");
 	  else if (file)
           {
-          if (strcmp(myargv[p],"nerve.wad") != -1)
+          if (!strnicmp(AddDefaultExtension(myargv[p],".wad"),"nerve.wad",9))
             gamemission = pack_nerve;
 	      D_AddFile(myargv[p]);
           }
