@@ -394,7 +394,7 @@ void I_InitSound(void)
   // int load_ibk(char *filename, int drums)
   if (mus_card<=4)
   {
-    if (gamemission==doom2 || gamemission==pack_tnt || gamemission==pack_plut || gamemission==pack_nerve) 
+    if (gamemode==commercial) 
     {	
 	   if (load_ibk("MBF_D2GM.IBK",0)==0) fputs(" - MBF_D2GM.IBK loaded", stdout);
 	   else                               fputs(" - failed to load MBF_D2GM.IBK", stdout); 
