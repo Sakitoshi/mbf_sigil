@@ -292,6 +292,7 @@ extern int mapcolor_frnd;  // friends colors  // killough 8/8/98
 extern int default_monsters_remember;                     
 extern int monsters_remember;                            
 
+extern int map_show_coordinates; // sakitoshi 2019
 extern int map_point_coordinates; // killough 10/98
 
 extern char* chat_macros[];  // chat macros
@@ -2764,7 +2765,9 @@ setup_menu_t auto_settings1[] =  // 1st AutoMap Settings screen
 
   {"Show Secrets only after entering",S_YESNO,m_null,AU_X,AU_Y+15*8, {"map_secret_after"}},
 
-  {"Show coordinates of automap pointer",S_YESNO,m_null,AU_X,AU_Y+16*8, {"map_point_coord"}},  // killough 10/98
+  {"Show coordinates in automap"        ,S_YESNO,m_null,AU_X,AU_Y+16*8, {"map_show_coord"}},  // Sakitoshi 2019
+  {"Show coordinates of automap pointer",S_YESNO,m_null,AU_X,AU_Y+17*8, {"map_point_coord"}},  // killough 10/98
+
 
   // Button for resetting to defaults
   {0,S_RESET,m_null,X_BUTTON,Y_BUTTON},

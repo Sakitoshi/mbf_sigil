@@ -674,6 +674,8 @@ static int HU_top(int i, int idx1, int top1)
 //
 // Passed nothing, returns nothing
 //
+int map_show_coordinates;
+
 void HU_Drawer(void)
 {
   char *s;
@@ -687,42 +689,45 @@ void HU_Drawer(void)
   // draw the automap widgets if automap is displayed
   if (automapactive)
     {
-      fixed_t x,y,z;   // killough 10/98:
-      void AM_Coordinates(const mobj_t *, fixed_t *, fixed_t *, fixed_t *);
-
       // map title
       HUlib_drawTextLine(&w_title, false);
 
-      // killough 10/98: allow coordinates to display non-following pointer 
-      AM_Coordinates(plr->mo, &x, &y, &z);
+    if (map_show_coordinates)
+      {
+        fixed_t x,y,z;   // killough 10/98:
+        void AM_Coordinates(const mobj_t *, fixed_t *, fixed_t *, fixed_t *);
 
-      //jff 2/16/98 output new coord display
-      // x-coord
-      sprintf(hud_coordstrx,"X: %-5d", x>>FRACBITS); // killough 10/98
-      HUlib_clearTextLine(&w_coordx);
-      s = hud_coordstrx;
-      while (*s)
-        HUlib_addCharToTextLine(&w_coordx, *s++);
-      HUlib_drawTextLine(&w_coordx, false);
+        // killough 10/98: allow coordinates to display non-following pointer 
+        AM_Coordinates(plr->mo, &x, &y, &z);
 
-      //jff 3/3/98 split coord display into x,y,z lines
-      // y-coord
-      sprintf(hud_coordstry,"Y: %-5d", y>>FRACBITS); // killough 10/98
-      HUlib_clearTextLine(&w_coordy);
-      s = hud_coordstry;
-      while (*s)
-        HUlib_addCharToTextLine(&w_coordy, *s++);
-      HUlib_drawTextLine(&w_coordy, false);
+        //jff 2/16/98 output new coord display
+        // x-coord
+        sprintf(hud_coordstrx,"X: %-5d", x>>FRACBITS); // killough 10/98
+        HUlib_clearTextLine(&w_coordx);
+        s = hud_coordstrx;
+        while (*s)
+          HUlib_addCharToTextLine(&w_coordx, *s++);
+        HUlib_drawTextLine(&w_coordx, false);
 
-      //jff 3/3/98 split coord display into x,y,z lines  
-      //jff 2/22/98 added z
-      // z-coord
-      sprintf(hud_coordstrz,"Z: %-5d", z>>FRACBITS);  // killough 10/98
-      HUlib_clearTextLine(&w_coordz);
-      s = hud_coordstrz;
-      while (*s)
-        HUlib_addCharToTextLine(&w_coordz, *s++);
-      HUlib_drawTextLine(&w_coordz, false);
+        //jff 3/3/98 split coord display into x,y,z lines
+        // y-coord
+        sprintf(hud_coordstry,"Y: %-5d", y>>FRACBITS); // killough 10/98
+        HUlib_clearTextLine(&w_coordy);
+        s = hud_coordstry;
+        while (*s)
+          HUlib_addCharToTextLine(&w_coordy, *s++);
+        HUlib_drawTextLine(&w_coordy, false);
+
+        //jff 3/3/98 split coord display into x,y,z lines  
+        //jff 2/22/98 added z
+        // z-coord
+        sprintf(hud_coordstrz,"Z: %-5d", z>>FRACBITS);  // killough 10/98
+        HUlib_clearTextLine(&w_coordz);
+        s = hud_coordstrz;
+        while (*s)
+          HUlib_addCharToTextLine(&w_coordz, *s++);
+        HUlib_drawTextLine(&w_coordz, false);
+      }
     }
 
   // draw the weapon/health/ammo/armor/kills/keys displays if optioned

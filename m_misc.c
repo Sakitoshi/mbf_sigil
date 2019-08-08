@@ -1340,6 +1340,13 @@ default_t defaults[] = {
     "color used for friends"
   },
 
+  {  // have a way to disable automap coordinates // Sakitoshi 2019
+    "map_show_coord",
+    &map_show_coordinates, NULL,
+    0, {0,1}, number, ss_auto, wad_yes,
+    "1 to show player coordinates in the automap"
+  },
+
   {
     "map_point_coord",
     &map_point_coordinates, NULL,
@@ -1363,7 +1370,7 @@ default_t defaults[] = {
   { // gold range
     "hudcolor_titl",
     &hudcolor_titl, NULL,
-    5, {0,9}, number, ss_auto, wad_yes,
+    6, {0,9}, number, ss_auto, wad_yes,
     "color range used for automap level title"
   },
 
