@@ -517,6 +517,16 @@ static void G_DoLoadLevel(void)
       else
         if (gamemap < 21)
           skytexture = R_TextureNumForName ("SKY2");
+
+      if (gamemission == pack_master)
+        {
+        if (gamemap == 12 || gamemap == 13 || (gamemap >= 16 && gamemap <= 18))
+          skytexture = R_TextureNumForName ("SKY2");
+        if (gamemap == 14 || gamemap == 15)
+          skytexture = R_TextureNumForName ("SKY1");
+        if (gamemap >= 19)
+          skytexture = R_TextureNumForName ("SKY3");
+        }
     }
   else //and lets not forget about DOOM, Ultimate DOOM and Sigil
     {
@@ -749,7 +759,7 @@ static void G_WriteDemoTiccmd(ticcmd_t* cmd)
   G_ReadDemoTiccmd (cmd);         // make SURE it is exactly the same
 }
 
-static boolean secretexit;
+boolean secretexit;
 
 void G_ExitLevel(void)
 {
@@ -829,18 +839,25 @@ static void G_DoCompleted(void)
           case 4:
             if (gamemission == pack_nerve)
               wminfo.next = 8;
+          case 20:
+            if (gamemission == pack_master)
+              wminfo.next = 20;
           }
       else
         switch(gamemap)
           {
+          case 9:
+            if (gamemission == pack_nerve)
+              wminfo.next = 4; break;
+          case 21:
+            if (gamemission == pack_master)
+              break;
           case 31:
           case 32:
             wminfo.next = 15; break;
           default:
             wminfo.next = gamemap;
           }
-        if (gamemission == pack_nerve && gamemap == 9)
-          wminfo.next = 4;
     }
   else
     {
@@ -1832,10 +1849,17 @@ void G_WorldDone(void)
           if (!secretexit)
             break;
         case 6:
-          if (gamemission == pack_nerve)
+          if (gamemission == pack_nerve || gamemission == pack_master)
             break;
         case 11:
+          if (gamemission == pack_master)
+            break;
         case 20:
+          if (gamemission == pack_master && secretexit)
+            break;
+        case 21:
+          if (gamemission == pack_master)
+            F_StartFinale(); break;
         case 30:
           F_StartFinale();
           break;

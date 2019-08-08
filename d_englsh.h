@@ -243,7 +243,29 @@
   
 #define HUSTR_31    "level 31: wolfenstein"
 #define HUSTR_32    "level 32: grosse"
-
+  
+#define MHUSTR_1     "1: attack"
+#define MHUSTR_2     "2: canyon"
+#define MHUSTR_3     "3: the catwalk"
+#define MHUSTR_4     "4: the combine"
+#define MHUSTR_5     "5: the fistula"
+#define MHUSTR_6     "6: the garrison"
+#define MHUSTR_7     "7: titan manor"
+#define MHUSTR_8     "8: paradox"
+#define MHUSTR_9     "9: subspace"
+#define MHUSTR_10    "10: subterra"
+#define MHUSTR_11    "11: trapped on titan"
+#define MHUSTR_12    "12: virgil's lead"
+#define MHUSTR_13    "13: minos' judgement"
+#define MHUSTR_14    "14: bloodsea keep"
+#define MHUSTR_15    "15: mephisto's maosoleum"
+#define MHUSTR_16    "16: nessus"
+#define MHUSTR_17    "17: geryon"
+#define MHUSTR_18    "18: vesperas"
+#define MHUSTR_19    "19: black tower"
+#define MHUSTR_20    "20: the express elevator to hell"
+#define MHUSTR_21    "21: bad dream"
+  
 #define NHUSTR_1    "level 1: the earth base"
 #define NHUSTR_2    "level 2: the pain labs"
 #define NHUSTR_3    "level 3: canyon of the dead"
@@ -253,7 +275,7 @@
 #define NHUSTR_7    "level 7: baron's banquet"
 #define NHUSTR_8    "level 8: tomb of malevolence"
 #define NHUSTR_9    "level 9: march of the demons"
-
+  
 #define PHUSTR_1    "level 1: congo"
 #define PHUSTR_2    "level 2: well of souls"
 #define PHUSTR_3    "level 3: aztec"
@@ -579,9 +601,17 @@
   "BLAZE THROUGH THIS ONE!\n"
   
   
+// Master Levels for Doom 2 end:
+  
+  #define MASTERTEXT \
+  "CONGRATULATIONS, YOU HAVE FINISHED...\n"\
+  "\n"\
+  "THE MASTER LEVELS\n"
+  
+
 // No Rest For The Living end:
   
-#define NERVETEXT \
+  #define NERVETEXT \
   "Trouble was brewing again in your favorite\n"\
   "vacation spot... Hell. Some Cyberdemon\n"\
   "punk thought he could turn Hell into a\n"\

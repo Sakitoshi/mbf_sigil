@@ -953,6 +953,9 @@ static void WI_drawShowNextLoc(void)
   if (gamemission == pack_nerve && wbs->last == 7)
     return; // MAP08 end game
 
+  if (gamemission == pack_master && (wbs->last == 20 || (wbs->last == 19 && secretexit)))
+    return; // MAP20 or 21 end game, depending if the secret exit was used or not
+
   // draws which level you are entering..
   if ( (gamemode != commercial)
        || wbs->next != 30)  // check for MAP30 end game

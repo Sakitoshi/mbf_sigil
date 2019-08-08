@@ -257,6 +257,27 @@ char *s_HUSTR_29    = HUSTR_29;
 char *s_HUSTR_30    = HUSTR_30;
 char *s_HUSTR_31    = HUSTR_31;
 char *s_HUSTR_32    = HUSTR_32;
+char *s_MHUSTR_1     = MHUSTR_1;
+char *s_MHUSTR_2     = MHUSTR_2;
+char *s_MHUSTR_3     = MHUSTR_3;
+char *s_MHUSTR_4     = MHUSTR_4;
+char *s_MHUSTR_5     = MHUSTR_5;
+char *s_MHUSTR_6     = MHUSTR_6;
+char *s_MHUSTR_7     = MHUSTR_7;
+char *s_MHUSTR_8     = MHUSTR_8;
+char *s_MHUSTR_9     = MHUSTR_9;
+char *s_MHUSTR_10    = MHUSTR_10;
+char *s_MHUSTR_11    = MHUSTR_11;
+char *s_MHUSTR_12    = MHUSTR_12;
+char *s_MHUSTR_13    = MHUSTR_13;
+char *s_MHUSTR_14    = MHUSTR_14;
+char *s_MHUSTR_15    = MHUSTR_15;
+char *s_MHUSTR_16    = MHUSTR_16;
+char *s_MHUSTR_17    = MHUSTR_17;
+char *s_MHUSTR_18    = MHUSTR_18;
+char *s_MHUSTR_19    = MHUSTR_19;
+char *s_MHUSTR_20    = MHUSTR_20;
+char *s_MHUSTR_21    = MHUSTR_21;
 char *s_NHUSTR_1    = NHUSTR_1;
 char *s_NHUSTR_2    = NHUSTR_2;
 char *s_NHUSTR_3    = NHUSTR_3;
@@ -385,6 +406,7 @@ char *s_C3TEXT     = C3TEXT;
 char *s_C4TEXT     = C4TEXT;
 char *s_C5TEXT     = C5TEXT;
 char *s_C6TEXT     = C6TEXT;
+char *s_MASTERTEXT  = MASTERTEXT;
 char *s_NERVETEXT  = NERVETEXT;
 char *s_P1TEXT     = P1TEXT;
 char *s_P2TEXT     = P2TEXT;
@@ -612,6 +634,27 @@ deh_strs deh_strlookup[] = {
   {&s_HUSTR_30,"HUSTR_30"},
   {&s_HUSTR_31,"HUSTR_31"},
   {&s_HUSTR_32,"HUSTR_32"},
+  {&s_MHUSTR_1,"MHUSTR_1"},
+  {&s_MHUSTR_2,"MHUSTR_2"},
+  {&s_MHUSTR_3,"MHUSTR_3"},
+  {&s_MHUSTR_4,"MHUSTR_4"},
+  {&s_MHUSTR_5,"MHUSTR_5"},
+  {&s_MHUSTR_6,"MHUSTR_6"},
+  {&s_MHUSTR_7,"MHUSTR_7"},
+  {&s_MHUSTR_8,"MHUSTR_8"},
+  {&s_MHUSTR_9,"MHUSTR_9"},
+  {&s_MHUSTR_10,"MHUSTR_10"},
+  {&s_MHUSTR_11,"MHUSTR_11"},
+  {&s_MHUSTR_12,"MHUSTR_12"},
+  {&s_MHUSTR_13,"MHUSTR_13"},
+  {&s_MHUSTR_14,"MHUSTR_14"},
+  {&s_MHUSTR_15,"MHUSTR_15"},
+  {&s_MHUSTR_16,"MHUSTR_16"},
+  {&s_MHUSTR_17,"MHUSTR_17"},
+  {&s_MHUSTR_18,"MHUSTR_18"},
+  {&s_MHUSTR_19,"MHUSTR_19"},
+  {&s_MHUSTR_20,"MHUSTR_20"},
+  {&s_MHUSTR_21,"MHUSTR_21"},
   {&s_NHUSTR_1,"NHUSTR_1"},
   {&s_NHUSTR_2,"NHUSTR_2"},
   {&s_NHUSTR_3,"NHUSTR_3"},
@@ -896,6 +939,32 @@ char **mapnames2[] = // DOOM 2 map names.
   &s_HUSTR_30,
   &s_HUSTR_31,
   &s_HUSTR_32,
+};
+
+
+char **mapnamesm[] = // MASTERLEVELS WAD map names.
+{
+  &s_MHUSTR_1,
+  &s_MHUSTR_2,
+  &s_MHUSTR_3,
+  &s_MHUSTR_4,
+  &s_MHUSTR_5,
+  &s_MHUSTR_6,
+  &s_MHUSTR_7,
+  &s_MHUSTR_8,
+  &s_MHUSTR_9,
+  &s_MHUSTR_10,
+  &s_MHUSTR_11,
+  &s_MHUSTR_12,
+  &s_MHUSTR_13,
+  &s_MHUSTR_14,
+  &s_MHUSTR_15,
+  &s_MHUSTR_16,
+  &s_MHUSTR_17,
+  &s_MHUSTR_18,
+  &s_MHUSTR_19,
+  &s_MHUSTR_20,
+  &s_MHUSTR_21,
 };
 
 

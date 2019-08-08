@@ -164,6 +164,11 @@ void F_StartFinale (void)
         finaleflat = bgflat06;
         finaletext = s_NERVETEXT;
       }
+      if (gamemission == pack_master && (gamemap == 20 || gamemap == 21))
+      {
+        finaleflat = bgflat06;
+        finaletext = s_MASTERTEXT;
+      }
       break;
       // Ty 08/27/98 - end gamemission logic
     } 
@@ -249,7 +254,8 @@ void F_Ticker(void)
 	    if (!demo_compatibility && midstage)
 	      {
 	      next_level:
-		if (gamemap == 30 || (gamemission == pack_nerve && gamemap == 8))
+		if (gamemap == 30 || (gamemission == pack_nerve && gamemap == 8) ||
+            (gamemission == pack_master && (gamemap == 20 || gamemap == 21)))
 		  F_StartCast();              // cast of Doom 2 characters
 		else
 		  gameaction = ga_worlddone;  // next level, e.g. MAP07

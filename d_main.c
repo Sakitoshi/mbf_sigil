@@ -1221,6 +1221,7 @@ void D_DoomMain(void)
 {
   int p, slot, unlockparm;
   char file[PATH_MAX+1];      // killough 3/22/98
+  struct stat sbuf;           // Sakitoshi 2019, required to check if SKYM.WAD exists
   in_graphics_mode=0;         // GB 2014, required here, else flashing disk will draw when not allowed
   setbuf(stdout,NULL);
 
@@ -1305,9 +1306,18 @@ void D_DoomMain(void)
 	    file = !strcasecmp(myargv[p],"-file");
 	  else if (file)
           {
-          if (!strnicmp(AddDefaultExtension(myargv[p],".wad"),"nerve.wad",9))
-            gamemission = pack_nerve;
 	      D_AddFile(myargv[p]);
+          if (!strnicmp(AddDefaultExtension(myargv[p],".wad"),"nerve.wad",10) ||
+              !strnicmp(AddDefaultExtension(myargv[p],".wad"),"nrftl.wad",10))
+            gamemission = pack_nerve;
+          if (!strnicmp(AddDefaultExtension(myargv[p],".wad"),"masterlevels.wad",16) ||
+              !strnicmp(AddDefaultExtension(myargv[p],".wad"),"master~1.wad",12) ||
+              !strnicmp(AddDefaultExtension(myargv[p],".wad"),"master.wad",10))
+            {
+            gamemission = pack_master;
+            if (!stat("mstrsky.wad",&sbuf))
+	          D_AddFile("mstrsky.wad");
+            }
           }
 	}
     }
@@ -1340,6 +1350,13 @@ void D_DoomMain(void)
     case commercial:
       switch (gamemission)      // joel 10/16/98 Final DOOM fix
         {
+        case pack_master:
+          sprintf (title,
+               "                       Master Levels for DOOM 2 v%i.%02i                           ",
+               VERSION/100,VERSION%100);
+          textbackground(RED); textcolor(WHITE);  
+          break;
+
         case pack_nerve:
           sprintf (title,
                "                    DOOM 2: No Rest For The Living v%i.%02i                        ",

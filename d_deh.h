@@ -413,6 +413,49 @@ extern char *s_HUSTR_31; // = HUSTR_31;
 //#define HUSTR_32      "level 32: grosse"
 extern char *s_HUSTR_32; // = HUSTR_32;
 
+//#define MHUSTR_1      "1: attack"
+extern char *s_MHUSTR_1; // = MHUSTR_1;
+//#define MHUSTR_2      "2: canyon"
+extern char *s_MHUSTR_2; // = MHUSTR_2;
+//#define MHUSTR_3      "3: the catwalk"
+extern char *s_MHUSTR_3; // = MHUSTR_3;
+//#define MHUSTR_4      "4: the combine"
+extern char *s_MHUSTR_4; // = MHUSTR_4;
+//#define MHUSTR_5      "5: the fistula"
+extern char *s_MHUSTR_5; // = MHUSTR_5;
+//#define MHUSTR_6      "6: the garrison"
+extern char *s_MHUSTR_6; // = MHUSTR_6;
+//#define MHUSTR_7      "7: titan manor"
+extern char *s_MHUSTR_7; // = MHUSTR_7;
+//#define MHUSTR_8      "8: paradox"
+extern char *s_MHUSTR_8; // = MHUSTR_8;
+//#define MHUSTR_9      "9: subspace"
+extern char *s_MHUSTR_9; // = MHUSTR_9;
+//#define MHUSTR_10     "10: subterra"
+extern char *s_MHUSTR_10; // = MHUSTR_10;
+//#define MHUSTR_11     "11: trapped on titan"
+extern char *s_MHUSTR_11; // = MHUSTR_11;
+//#define MHUSTR_12     "12: virgil's lead"
+extern char *s_MHUSTR_12; // = MHUSTR_12;
+//#define MHUSTR_13     "13: minos' judgement"
+extern char *s_MHUSTR_13; // = MHUSTR_13;
+//#define MHUSTR_14     "14: bloodsea keep"
+extern char *s_MHUSTR_14; // = MHUSTR_14;
+//#define MHUSTR_15     "15: mephisto's maosoleum"
+extern char *s_MHUSTR_15; // = MHUSTR_15;
+//#define MHUSTR_16     "16: nessus"
+extern char *s_MHUSTR_16; // = MHUSTR_16;
+//#define MHUSTR_17     "17: geryon"
+extern char *s_MHUSTR_17; // = MHUSTR_17;
+//#define MHUSTR_18     "18: vesperas"
+extern char *s_MHUSTR_18; // = MHUSTR_18;
+//#define MHUSTR_19     "19: black tower"
+extern char *s_MHUSTR_19; // = MHUSTR_19;
+//#define MHUSTR_20     "20: the express elevator to hell"
+extern char *s_MHUSTR_20; // = MHUSTR_20;
+//#define MHUSTR_21     "21: bad dream"
+extern char *s_MHUSTR_21; // = MHUSTR_21;
+
 //#define NHUSTR_1      "level 1: the earth base"
 extern char *s_NHUSTR_1; // = NHUSTR_1;
 //#define NHUSTR_2      "level 2: the pain labs"
@@ -874,6 +917,15 @@ extern char *s_C5TEXT; // = C5TEXT;
 //"SUPER SECRET LEVEL!  YOU'D BETTER\n"
 //"BLAZE THROUGH THIS ONE!\n"
 extern char *s_C6TEXT; // = C6TEXT;
+
+
+// Master Levels for Doom 2 end:
+
+//#define MASTERTEXT
+//"CONGRATULATIONS, YOU HAVE FINISHED...\n"
+//"\n"
+//"THE MASTER LEVELS\n"
+extern char *s_MASTERTEXT; // = MASTERTEXT;
 
 
 // No Rest For The Living end:

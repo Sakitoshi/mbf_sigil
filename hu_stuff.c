@@ -54,6 +54,7 @@ int hud_graph_keys=1; //jff 3/7/98 display HUD keys as graphics
 // These four shortcuts modifed to reflect char ** of mapnamesx[]
 #define HU_TITLE  (*mapnames[(gameepisode-1)*9+gamemap-1])
 #define HU_TITLE2 (*mapnames2[gamemap-1])
+#define HU_TITLEM (*mapnamesm[gamemap-1])
 #define HU_TITLEN (*mapnamesn[gamemap-1])
 #define HU_TITLEP (*mapnamesp[gamemap-1])
 #define HU_TITLET (*mapnamest[gamemap-1])
@@ -245,6 +246,7 @@ extern int armor_green;
 // See modified HUTITLEx macros
 extern char **mapnames[];
 extern char **mapnames2[];
+extern char **mapnamesm[];
 extern char **mapnamesn[];
 extern char **mapnamesp[];
 extern char **mapnamest[];
@@ -516,7 +518,7 @@ void HU_Start(void)
 
   s = gamemode != commercial ? HU_TITLE : gamemission == pack_tnt ?
     HU_TITLET : gamemission == pack_plut ? HU_TITLEP : gamemission
-    == pack_nerve ? HU_TITLEN : HU_TITLE2;
+    == pack_nerve ? HU_TITLEN : gamemission == pack_master ? HU_TITLEM : HU_TITLE2;
 
   while (*s)
     HUlib_addCharToTextLine(&w_title, *s++);
