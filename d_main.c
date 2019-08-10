@@ -64,6 +64,7 @@ static const char rcsid[] = "$Id: d_main.c,v 1.3 2000-08-12 21:29:25 fraggle Exp
 #include "r_main.h"
 #include "d_main.h"
 #include "d_deh.h"  // Ty 04/08/98 - Externalizations
+#include "crc32.h"  // Sakitoshi 2019, to calculate crc of the mission packs
 
 
 // DEHacked support - Ty 03/09/97
@@ -1306,17 +1307,31 @@ void D_DoomMain(void)
 	    file = !strcasecmp(myargv[p],"-file");
 	  else if (file)
           {
+          char *pwad = AddDefaultExtension(myargv[p],".wad");
+          unsigned int crcpwad;
 	      D_AddFile(myargv[p]);
-          if (!strnicmp(AddDefaultExtension(myargv[p],".wad"),"nerve.wad",10) ||
-              !strnicmp(AddDefaultExtension(myargv[p],".wad"),"nrftl.wad",10))
-            gamemission = pack_nerve;
-          if (!strnicmp(AddDefaultExtension(myargv[p],".wad"),"masterlevels.wad",16) ||
-              !strnicmp(AddDefaultExtension(myargv[p],".wad"),"master~1.wad",12) ||
-              !strnicmp(AddDefaultExtension(myargv[p],".wad"),"master.wad",10))
+          if ((!strnicmp(pwad,"nerve.wad",10) && !stat(pwad,&sbuf) && sbuf.st_size == 3819855) ||
+              (!strnicmp(pwad,"nrftl.wad",10) && !stat(pwad,&sbuf) && sbuf.st_size == 3954644))
             {
-            gamemission = pack_master;
-            if (!stat("mstrsky.wad",&sbuf))
-	          D_AddFile("mstrsky.wad");
+            unsigned int crcnerve = 0xAD7F9292;
+            unsigned int crcnrftl = 0x9BA0ABCA;
+            crcpwad = CheckCrc32(pwad);
+            if (crcpwad == crcnerve || crcpwad == crcnrftl)
+              gamemission = pack_nerve;
+            }
+          if (((!strnicmp(pwad,"masterlevels.wad",16) && !stat(pwad,&sbuf)) ||
+              (!strnicmp(pwad,"master~1.wad",12) && !stat(pwad,&sbuf)) ||
+              (!strnicmp(pwad,"master.wad",10) && !stat(pwad,&sbuf)))
+              && sbuf.st_size == 3479715)
+            {
+            unsigned int crcmaster = 0x6BAEC89F;
+            crcpwad = CheckCrc32(pwad);
+            if (crcpwad == crcmaster)
+              {
+              gamemission = pack_master;
+              if (!stat("mstrsky.wad",&sbuf))
+	            D_AddFile("mstrsky.wad");
+              }
             }
           }
 	}

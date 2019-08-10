@@ -138,7 +138,8 @@ OBJS=	\
         $(O)/drawcol.o      \
         $(O)/p_genlin.o     \
         $(O)/d_deh.o	    \
- 	$(O)/emu8kmid.o	    
+	$(O)/emu8kmid.o	    \
+	$(O)/crc32.o     
 
 doom all: $(O) $(O)/mbf.exe
 	$(CP) $(O)\mbf.exe .
@@ -527,6 +528,8 @@ $(O)/version.o: version.c version.h z_zone.h
 $(O)/emu8kmid.o: emu8kmid.c emu8k.h internal.h interndj.h allegro.h
 
 $(O)/keyboard.o: keyboard.c internal.h interndj.h allegro.h
+
+$(O)/crc32.o: crc32.c crc32.h
 	$(CC) $(CFLAGS_COMMON) -O $(CFLAGS_NEWFEATURES) -c $< -o $@
 
 # bin2c utility
