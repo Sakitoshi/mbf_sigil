@@ -1179,31 +1179,31 @@ default_t defaults[] = {
     "color used for automap grid lines"
   },
 
-  { // red-brown
+  { // red
     "mapcolor_wall",
     &mapcolor_wall, NULL,
-    23, {0,255}, number, ss_auto, wad_yes,
+    176, {0,255}, number, ss_auto, wad_yes,
     "color used for one side walls on automap"
   },
 
   { // lt brown
     "mapcolor_fchg",
     &mapcolor_fchg, NULL,
-    55, {0,255}, number, ss_auto, wad_yes,
+    64, {0,255}, number, ss_auto, wad_yes,
     "color used for lines floor height changes across"
   },
 
-  { // orange
+  { // yellow
     "mapcolor_cchg",
     &mapcolor_cchg, NULL,
-    215, {0,255}, number, ss_auto, wad_yes,
+    231, {0,255}, number, ss_auto, wad_yes,
     "color used for lines ceiling height changes across"
   },
 
-  { // white
+  { // yellow
     "mapcolor_clsd",
     &mapcolor_clsd, NULL,
-    208, {0,255}, number, ss_auto, wad_yes,
+    231, {0,255}, number, ss_auto, wad_yes,
     "color used for lines denoting closed doors, objects"
   },
 
@@ -1228,38 +1228,38 @@ default_t defaults[] = {
     "color used for yellow key sprites"
   },
 
-  { // red
+  { // none
     "mapcolor_rdor",
     &mapcolor_rdor, NULL,
-    175, {0,255}, number, ss_auto, wad_yes,
+    0, {0,255}, number, ss_auto, wad_yes,
     "color used for closed red doors"
   },
 
-  { // blue
+  { // none
     "mapcolor_bdor",
     &mapcolor_bdor, NULL,
-    204, {0,255}, number, ss_auto, wad_yes,
+    0, {0,255}, number, ss_auto, wad_yes,
     "color used for closed blue doors"
   },
 
-  { // yellow
+  { // none
     "mapcolor_ydor",
     &mapcolor_ydor, NULL,
-    231, {0,255}, number, ss_auto, wad_yes,
+    0, {0,255}, number, ss_auto, wad_yes,
     "color used for closed yellow doors"
   },
 
-  { // dk green
+  { // none
     "mapcolor_tele",
     &mapcolor_tele, NULL,
-    119, {0,255}, number, ss_auto, wad_yes,
+    0, {0,255}, number, ss_auto, wad_yes,
     "color used for teleporter lines"
   },
 
-  { // purple
+  { // none
     "mapcolor_secr",
     &mapcolor_secr, NULL,
-    252, {0,255}, number, ss_auto, wad_yes,
+    0, {0,255}, number, ss_auto, wad_yes,
     "color used for lines around secret sectors"
   },
 
@@ -1270,10 +1270,10 @@ default_t defaults[] = {
     "color used for exit lines"
   },
 
-  { // dk gray
+  { // gray
     "mapcolor_unsn",
     &mapcolor_unsn, NULL,
-    104, {0,255}, number, ss_auto, wad_yes,
+    96, {0,255}, number, ss_auto, wad_yes,
     "color used for lines not seen without computer map"
   },
 

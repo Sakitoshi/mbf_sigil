@@ -653,7 +653,7 @@ void AddIWAD(const char *iwad)
     return;
 
   //jff 9/3/98 use logical output routine.
-  //Sakitoshi 2019 not implemented, so using regular printf.
+  //Sakitoshi 2019 lprintf not implemented, so using regular printf.
   printf("IWAD found: %s\n",iwad); //jff 4/20/98 print only if found
   CheckIWAD(iwad,&gamemode,&haswolflevels);
 
@@ -687,7 +687,7 @@ void AddIWAD(const char *iwad)
   }
   if (gamemode == indetermined)
     //jff 9/3/98 use logical output routine
-    //Sakitoshi 2019 not implemented, so using regular printf.
+    //Sakitoshi 2019 lprintf not implemented, so using regular printf.
     printf("Unknown Game Version, may not work\n");
   D_AddFile(iwad);
 }
@@ -943,64 +943,8 @@ void IdentifyVersion (void)
 
   if (iwad && *iwad)
     {
-      printf("IWAD found: %s\n",iwad); //jff 4/20/98 print only if found
+      //printf("IWAD found: %s\n",iwad); //jff 4/20/98 print only if found. Sakitoshi 2019, not needed here anymore
       AddIWAD(iwad);
-      /*CheckIWAD(iwad,
-                &gamemode,
-                //&gamemission,   // joel 10/16/98 gamemission added
-                &haswolflevels);
-
-      switch(gamemode)
-        {
-        case retail:
-          puts("Ultimate DOOM version");  // killough 8/8/98
-          break;
-
-        case registered:
-          puts("DOOM Registered version");
-          break;
-
-        case shareware:
-          puts("DOOM Shareware version");
-          break;
-
-        case commercial:
-
-          // joel 10/16/98 Final DOOM fix
-          switch (gamemission)
-            {
-            case pack_tnt:
-              puts ("Final DOOM: TNT - Evilution version");
-              break;
-
-            case pack_plut:
-              puts ("Final DOOM: The Plutonia Experiment version");
-              break;
-
-            case doom2:
-            default:
-
-              i = strlen(iwad);
-              if (i>=10 && !strnicmp(iwad+i-10,"doom2f.wad",10))
-                {
-                  language=french;
-                  puts("DOOM II version, French language");  // killough 8/8/98
-                }
-              else
-                puts(haswolflevels ? "DOOM II version" :  // killough 10/98
-                     "DOOM II version, german edition, no wolf levels");
-              break;
-            }
-          // joel 10/16/88 end Final DOOM fix
-
-        default:
-          break;
-        }
-
-      if (gamemode == indetermined)
-        puts("Unknown Game Version, may not work");  // killough 8/8/98
-
-      D_AddFile(iwad);*/
     }
   else
     I_Error("IWAD not found\n");
