@@ -1843,7 +1843,10 @@ void G_WorldDone(void)
         {
         case 8:
           if (gamemission == pack_nerve)
-            F_StartFinale(); break;
+            {
+            F_StartFinale();
+            break;
+            }
         case 15:
         case 31:
           if (!secretexit)
@@ -1859,7 +1862,10 @@ void G_WorldDone(void)
             break;
         case 21:
           if (gamemission == pack_master)
-            F_StartFinale(); break;
+            {
+            F_StartFinale();
+            break;
+            }
         case 30:
           F_StartFinale();
           break;
