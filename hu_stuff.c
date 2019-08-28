@@ -516,9 +516,11 @@ void HU_Start(void)
 
   // initialize the automap's level title widget
 
-  s = gamemode != commercial ? HU_TITLE : gamemission == pack_tnt ?
-    HU_TITLET : gamemission == pack_plut ? HU_TITLEP : gamemission
-    == pack_nerve ? HU_TITLEN : gamemission == pack_master ? HU_TITLEM : HU_TITLE2;
+  s = gamemode != commercial ? HU_TITLE :
+      gamemission == pack_tnt ? HU_TITLET :
+      gamemission == pack_plut ? HU_TITLEP :
+      gamemission == pack_nerve ? HU_TITLEN :
+      gamemission == pack_master ? HU_TITLEM : HU_TITLE2;
 
   while (*s)
     HUlib_addCharToTextLine(&w_title, *s++);

@@ -1166,7 +1166,6 @@ void D_DoomMain(void)
 {
   int p, slot, unlockparm;
   char file[PATH_MAX+1];      // killough 3/22/98
-  struct stat sbuf;           // Sakitoshi 2019, required to check if SKYM.WAD exists
   in_graphics_mode=0;         // GB 2014, required here, else flashing disk will draw when not allowed
   setbuf(stdout,NULL);
 
@@ -1251,11 +1250,12 @@ void D_DoomMain(void)
 	    file = !strcasecmp(myargv[p],"-file");
 	  else if (file)
           {
+          struct stat sbuf; // Sakitoshi 2019, required to check the new mission packs
           char *pwad = AddDefaultExtension(myargv[p],".wad");
           unsigned int crcpwad;
 	      D_AddFile(myargv[p]);
-          if ((!strnicmp(pwad,"nerve.wad",10) && !stat(pwad,&sbuf) && sbuf.st_size == 3819855) ||
-              (!strnicmp(pwad,"nrftl.wad",10) && !stat(pwad,&sbuf) && sbuf.st_size == 3954644))
+          if ((!strnicmp(pwad,"nerve.wad",9) && !stat(pwad,&sbuf) && sbuf.st_size == 3819855) ||
+              (!strnicmp(pwad,"nrftl.wad",9) && !stat(pwad,&sbuf) && sbuf.st_size == 3954644))
             {
             unsigned int crcnerve = 0xAD7F9292;
             unsigned int crcnrftl = 0x9BA0ABCA;
@@ -1274,7 +1274,7 @@ void D_DoomMain(void)
               {
               gamemission = pack_master;
               if (!stat("mstrsky.wad",&sbuf))
-	            D_AddFile("mstrsky.wad");
+                D_AddFile("mstrsky.wad");
               }
             }
           }

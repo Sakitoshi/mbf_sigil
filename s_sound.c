@@ -522,7 +522,7 @@ void S_Start(void)
           case 8:
             mnum = mus_shawn2; break;
           case 9:
-            mnum = mus_ddtbl2;
+            mnum = mus_ddtbl2; break;
           default:
             mnum = mus_runnin + gamemap - 1;
           }

@@ -836,12 +836,13 @@ static void G_DoCompleted(void)
             wminfo.next = 30; break;
           case 31:
             wminfo.next = 31; break;
-          case 4:
-            if (gamemission == pack_nerve)
-              wminfo.next = 8;
           case 20:
             if (gamemission == pack_master)
               wminfo.next = 20;
+          case 4:
+            if (gamemission == pack_nerve)
+              wminfo.next = 8;
+            break;
           }
       else
         switch(gamemap)
@@ -1844,12 +1845,6 @@ void G_WorldDone(void)
     {
       switch (gamemap)
         {
-        case 8:
-          if (gamemission == pack_nerve)
-            {
-            F_StartFinale();
-            break;
-            }
         case 15:
         case 31:
           if (!secretexit)
@@ -1864,9 +1859,12 @@ void G_WorldDone(void)
           if (gamemission == pack_master && secretexit)
             break;
         case 30:
-          F_StartFinale();
+          F_StartFinale(); break;
         case 21:
           if (gamemission == pack_master)
+            F_StartFinale(); break;
+        case 8:
+          if (gamemission == pack_nerve)
             F_StartFinale(); break;
         }
     }

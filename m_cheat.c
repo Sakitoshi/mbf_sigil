@@ -453,7 +453,7 @@ char buf[3];
       (gamemode == shareware  && (epsd > 1 || map > 9  )) ||
       (gamemode == commercial && (epsd > 1 || map > 32 )) ||
       (gamemission == pack_nerve && (epsd > 1 || map > 9 )) ||
-      (gamemission == pack_master && (epsd > 1 || map > 21 )) )
+      (gamemission == pack_master && (epsd > 1 || map > 21 )))
     return;
 
   // So be it.
