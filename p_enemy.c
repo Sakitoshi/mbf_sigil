@@ -2147,7 +2147,10 @@ void A_BossDeath(mobj_t *mo)
 
   if (gamemode == commercial)
     {
-      if (gamemap != 7 && (gamemission != pack_master && (gamemap != 14 || gamemap != 15)))
+      if (gamemap != 7)
+        return;
+
+      if (gamemission != pack_master && (gamemap != 14 || gamemap != 15))
         return;
 
       if ((mo->type != MT_FATSO)
