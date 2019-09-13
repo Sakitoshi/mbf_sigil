@@ -569,14 +569,15 @@ void M_FinishHelp(int choice)        // killough 10/98
 // Had a "quick hack to fix romero bug"
 //
 // killough 10/98: updated with new screens
+// Sakitoshi 2019: use the same screens as og doom.
 
 void M_DrawReadThis1(void)
 {
   inhelpscreens = true;
-  if (gamemode == shareware)
-    V_DrawPatchDirect (0,0,0,W_CacheLumpName("HELP2",PU_CACHE));
+  if (gamemode == retail)
+    V_DrawPatchDirect (0,0,0,W_CacheLumpName("HELP1",PU_CACHE));
   else
-    M_DrawCredits();
+    V_DrawPatchDirect (0,0,0,W_CacheLumpName("HELP2",PU_CACHE));
 }
 
 //
@@ -587,10 +588,8 @@ void M_DrawReadThis1(void)
 void M_DrawReadThis2(void)
 {
   inhelpscreens = true;
-  if (gamemode == shareware)
-    M_DrawCredits();
-  else
-    V_DrawPatchDirect (0,0,0,W_CacheLumpName("CREDIT",PU_CACHE));
+  if (gamemode != retail)
+    V_DrawPatchDirect (0,0,0,W_CacheLumpName("HELP1",PU_CACHE));
 }
 
 /////////////////////////////
@@ -5643,6 +5642,12 @@ void M_Init(void)
 
       // fall through
     case retail:
+      // Sakitoshi 2019: ultimate doom only has 1 help screen.
+      if (gamemode == retail)
+        {
+        ReadDef1.routine = M_DrawReadThis1;
+        ReadMenu1[0].routine = M_FinishReadThis;
+        }
       // Check until which episode are there maps available
       for(EpiDef.numitems = 0; EpiDef.numitems < 5; EpiDef.numitems++) {
         char mapname[9];
