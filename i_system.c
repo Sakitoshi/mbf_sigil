@@ -272,7 +272,7 @@ void I_EndDoom(void)
   if (lumpinfo && (lump = W_CheckNumForName("ENDOOM")) != -1) // killough 10/98
     {  // killough 8/19/98: simplify
       memcpy(0xb8000 + (byte *) __djgpp_conventional_base,
-	     W_CacheLumpNum(lump, PU_CACHE), 0xf00);
+	     W_CacheLumpNum(lump, PU_CACHE), 0xfa0);
       gotoxy(1,25);
     }
 }
