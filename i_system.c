@@ -273,6 +273,7 @@ void I_EndDoom(void)
     {  // killough 8/19/98: simplify
       memcpy(0xb8000 + (byte *) __djgpp_conventional_base,
 	     W_CacheLumpNum(lump, PU_CACHE), 0xfa0);
+      textbackground(BLACK); textcolor(LIGHTGRAY); // restore normal colors
       gotoxy(1,25);
     }
 }

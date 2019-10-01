@@ -295,7 +295,7 @@ void I_InitSound(void)
   int i;  // killough 10/98: eliminate snd_c since we use default_snd_card now
 
   // Sakitoshi: read sound card settings from allegro.cfg and dont autodetect if not specified.
-  set_config_file("allegro.cfg");
+  //set_config_file("allegro.cfg");
   snd_card = get_config_int("sound", "digi_card", 0);
   mus_card = get_config_int("sound", "midi_card", 0);
 

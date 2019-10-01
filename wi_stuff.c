@@ -349,7 +349,7 @@ static patch_t*   wiminus;
 static patch_t*   finished;
 
 // "Entering" graphic
-static patch_t*   entering; 
+static patch_t*   entering;
 
 // "secret"
 static patch_t*   sp_secret;
@@ -451,7 +451,8 @@ static void WI_drawEL(void)
               y, FB, entering);
 
   // draw level
-  y += (5*SHORT(lnames[wbs->next]->height))/4;
+  if (lnames[wbs->next]->height < 90)
+    y += (5*SHORT(lnames[wbs->next]->height))/4;
 
   V_DrawPatch((SCREENWIDTH - SHORT(lnames[wbs->next]->width))/2,
               y, FB, lnames[wbs->next]);
@@ -1700,9 +1701,9 @@ static void WI_drawStats(void)
   // without deh patch
   // killough 2/22/98: skip drawing par times on pwads
   // Ty 03/17/98: unless pars changed with deh patch
-
+  // Sakitoshi 2019 allow drawing par times for episode 4 and sigil if a deh is provided
   if (!modifiedgame || deh_pars || gamemission==pack_nerve)
-    if (wbs->epsd < 4)
+    if (!wbs->partime == 0)
       {
 	V_DrawPatch(SCREENWIDTH/2 + SP_TIMEX, SP_TIMEY, FB, par);
 	WI_drawTime(SCREENWIDTH - SP_TIMEX, SP_TIMEY, cnt_par);

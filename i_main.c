@@ -81,7 +81,7 @@ int main(int argc, char **argv)
      loud SFX noise because the sound card is
      left in an unstable state.
   */
-  set_config_file("SETUP.CFG");
+  //set_config_file("SETUP.CFG"); // Sakitoshi 2019: leave it per-default.
   allegro_init();
   Z_Init();                  // 1/18/98 killough: start up memory stuff first
   atexit(I_Quit);

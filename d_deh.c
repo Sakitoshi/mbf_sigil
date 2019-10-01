@@ -2299,7 +2299,8 @@ void deh_procPars(DEHFILE *fpin, FILE* fpout, char *line) // extension
           // Ty 07/11/98 - level was being checked against max 3 - dumb error
           // Note that episode 4 does not have par times per original design
           // in Ultimate DOOM so that is not supported here.
-          if (episode < 1 || episode > 3 || level < 1 || level > 9)
+          // Sakitoshi 2019 updated to allow custom par times for episode 4 and sigil.
+          if (episode < 1 || episode > 5 || level < 1 || level > 9)
             {
               if (fpout) fprintf(fpout,
                                  "Invalid ExMx values E%dM%d\n",episode, level);

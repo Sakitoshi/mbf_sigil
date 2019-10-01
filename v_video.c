@@ -671,16 +671,16 @@ void V_GetBlock(int x, int y, int scrn, int width, int height, byte *dest)
 // GB 2014: Single color filled rectangle, backdrop for FPS meter 
 void V_DrawRect(int scrn, int x1,int y1, int x2, int y2, byte color)
 {
+   int top_offset,bottom_offset,i,w,scrw=SCREENWIDTH;
+
 #ifdef RANGECHECK
-  if (x<0
-      || x+w>SCREENWIDTH
-      || y<0
-      || y+h>SCREENHEIGHT
+  if (x1<0
+      || x1+x2>SCREENWIDTH
+      || y1<0
+      || y1+y2>SCREENHEIGHT
       || (unsigned)scrn>4 )
     I_Error ("Bad V_DrawRect");
 #endif
-
-   int top_offset,bottom_offset,i,w,scrw=SCREENWIDTH;
 
    if (hires)
    {

@@ -1810,11 +1810,13 @@ void G_ScreenShot(void)
 }
 
 // DOOM Par Times
-int pars[4][10] = {
+int pars[6][10] = {
   {0},
   {0,30,75,120,90,165,180,180,30,165},
   {0,90,90,90,120,90,360,240,30,170},
-  {0,90,45,90,150,90,90,165,30,135}
+  {0,90,45,90,150,90,90,165,30,135},
+  {0}, // Sakitoshi 2019 episode 4 doesn't have pars, better report 0 :)
+  {0}  // also report 0 for episode 5.
 };
 
 // DOOM II Par Times
