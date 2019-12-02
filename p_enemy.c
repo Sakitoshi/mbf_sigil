@@ -2147,11 +2147,8 @@ void A_BossDeath(mobj_t *mo)
 
   if (gamemode == commercial)
     {
-      if (gamemap != 7)
-        return;
-
-      if (gamemission != pack_master && (gamemap != 14 || gamemap != 15))
-        return;
+      if (gamemap != 7 && (gamemission != pack_master || (gamemap != 14 && gamemap != 15)))
+          return;
 
       if ((mo->type != MT_FATSO)
           && (mo->type != MT_BABY))
@@ -2238,13 +2235,23 @@ void A_BossDeath(mobj_t *mo)
   // victory!
   if (gamemode == commercial)
     {
-      if (gamemission == pack_master && (gamemap == 14 || gamemap == 15))
+      if (gamemission == pack_master)
         {
-          if (mo->type == MT_FATSO)
+          if (gamemap == 14 || gamemap == 15)
             {
-              junk.tag = 666;
-              EV_DoFloor(&junk,lowerFloorToLowest);
-              return;
+              if (mo->type == MT_FATSO)
+                {
+                  junk.tag = 666;
+                  EV_DoFloor(&junk,lowerFloorToLowest);
+                  return;
+                }
+
+              if (mo->type == MT_BABY)
+                {
+                  junk.tag = 667;
+                  EV_DoFloor(&junk,raiseToTexture);
+                  return;
+                }
             }
         }
       if (gamemap == 7)
