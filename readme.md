@@ -6,7 +6,20 @@ This is MBF modified to accomodate Sigil as a proper 5th episode.
 I got the source code from [here](https://www.vogons.org/viewtopic.php?f=24&t=40857) and ported the changes from [libretro-prboom](https://github.com/libretro/libretro-prboom) (pull requests 88 to 90 and 97)
 
 #### Compiling
-To compile it you'll need allegro 3.0, djgpp and a pc running dos (dosbox is fine too).
+
+##### Pre-requisites
+
+- [allegro 3.0](https://liballeg.org/old.html)
+- an old djgpp version from MBF's era (around 1999 - DJGPP from August '98 confirmed working)
+- a pc running dos (dosbox is fine too)
+
+##### Steps (on Linux with dosbox installed)
+
+- Clone this repo
+- Unzip djgpp into a new folder in your checkout called `djgpp` such that gcc is at `djgpp/djgpp/bin/gcc.exe`
+- Unzip the allegro 3.0 sources to a new folder in your checkout called `allegro`
+- Run `./build.sh allegro` which will run dosbox for you with the right settings (current folder mounted as `c:\`) and build allegro. You can close dosbox when it's done.
+- Then you can `./build.sh mbf` to build MBF. You can close dosbox when it's done.
 
 #### Changes
 - Added full support for episode 5: Sigil.
