@@ -2,6 +2,8 @@
 
 ![alt_text](https://raw.githubusercontent.com/Sakitoshi/mbf_sigil/master/docs/mbf_sigil.png)
 
+![alt_text](docs/mbf_sigil2.png)
+
 This is MBF modified to accomodate Sigil & Sigil II as proper 5th and 6th episodes.
 I got the source code from [here](https://www.vogons.org/viewtopic.php?f=24&t=40857) and ported the changes from [libretro-prboom](https://github.com/libretro/libretro-prboom) (pull requests 88 to 90 and 97)
 
