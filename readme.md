@@ -12,7 +12,7 @@ I got the source code from [here](https://www.vogons.org/viewtopic.php?f=24&t=40
 ##### Pre-requisites
 
 - [allegro 3.0](https://liballeg.org/old.html)
-- an old djgpp version from MBF's era (around 1999 - DJGPP from August '98 confirmed working)
+- an old djgpp version from MBF's era (confirmed working: bnu27b.zip, djdev201.zip, GCC2721B.ZIP, mak3791b.zip, txi390b.zip)
 - a pc running dos (dosbox is fine too)
 
 ##### Steps (on Linux with dosbox installed)
