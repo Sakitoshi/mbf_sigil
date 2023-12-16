@@ -408,7 +408,7 @@ static void D_DrawTitle1(char *name)
 {
   S_StartMusic(mus_intro);
   pagetic = (TICRATE*170)/35;
-  if (W_CheckNumForName("SIGILINT") != -1) // Sakitoshi 2019: if Sigil detected, wait for the title theme to end.
+  if (W_CheckNumForName("SIGILINT") != -1 || W_CheckNumForName("SIGILIN2") != -1) // Sakitoshi 2019: if Sigil detected, wait for the title theme to end.
     pagetic = (TICRATE*404)/35;
   D_SetPageName(name);
 }

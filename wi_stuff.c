@@ -1804,9 +1804,12 @@ void WI_DrawBackground(void)
     sprintf(name, "WIMAP%d", wbs->epsd);
 
   if (W_CheckNumForName(name) == -1) {
-    if ((wbs->epsd == 4 || wbs->epsd == 5) && (W_CheckNumForName("SIGILINT") != -1))
+    if ((wbs->epsd == 4) && (W_CheckNumForName("SIGILINT") != -1))
       // SIGIL support
       strcpy(name, "SIGILINT");
+    else if ((wbs->epsd == 5) && (W_CheckNumForName("SIGILIN2") != -1))
+      // SIGIL II support
+      strcpy(name, "SIGILIN2");
     else
       // default intermission for extra custom episodes
       strcpy(name, "INTERPIC");

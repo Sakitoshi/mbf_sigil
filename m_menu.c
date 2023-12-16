@@ -599,7 +599,7 @@ void M_DrawReadThis2(void)
 
 //
 // episodes_e provides numbers for the episode menu items. The default is
-// now 5, to accomodate Sigil. If the user is running anything else,
+// now 6, to accomodate Sigil & Sigil II. If the user is running anything else,
 // this is accounted for in the code.
 //
 

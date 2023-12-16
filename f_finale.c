@@ -746,7 +746,7 @@ void F_Drawer (void)
            break;
       case 6:
            V_DrawPatch (0,0,0,
-             W_CacheLumpName("SIGILEND",PU_CACHE));
+             W_CacheLumpName("SIGILIN2",PU_CACHE));
            break;
     }
   }

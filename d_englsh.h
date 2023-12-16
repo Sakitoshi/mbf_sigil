@@ -208,15 +208,15 @@
 #define HUSTR_E5M8  "E5M8: Halls of Perdition"
 #define HUSTR_E5M9  "E5M9: Realm of Iblis"
 
-#define HUSTR_E6M1  "E5M1: Baphomet's Demesne"
-#define HUSTR_E6M2  "E5M2: Sheol"
-#define HUSTR_E6M3  "E5M3: Cages of the Damned"
-#define HUSTR_E6M4  "E5M4: Paths of Wretchedness"
-#define HUSTR_E6M5  "E5M5: Abaddon's Void"
-#define HUSTR_E6M6  "E5M6: Unspeakable Persecution"
-#define HUSTR_E6M7  "E5M7: Nightmare Underworld"
-#define HUSTR_E6M8  "E5M8: Halls of Perdition"
-#define HUSTR_E6M9  "E5M9: Realm of Iblis"
+#define HUSTR_E6M1  "E6M1: Cursed Darkness"
+#define HUSTR_E6M2  "E6M2: Violent Hatred"
+#define HUSTR_E6M3  "E6M3: Twilight Desolation"
+#define HUSTR_E6M4  "E6M4: Fragments of Sanity"
+#define HUSTR_E6M5  "E6M5: Wrathful Reckoning"
+#define HUSTR_E6M6  "E6M6: Vengeance Unleashed"
+#define HUSTR_E6M7  "E6M7: Descent Into Terror"
+#define HUSTR_E6M8  "E6M8: Abyss of Despair"
+#define HUSTR_E6M9  "E6M9: Shattered Homecoming"
 
 #define HUSTR_1     "level 1: entryway"
 #define HUSTR_2     "level 2: underhalls"
@@ -521,16 +521,14 @@
   
   
 #define E6TEXT \
-  "Baphomet was only doing Satan's bidding\n"\
-  "by bringing you back to Hell. Somehow they\n"\
-  "didn't understand that you're the reason\n"\
-  "they failed in the first place.\n"\
+  "Satan erred in casting you to Hell's\n"\
+  "darker depths. His plan failed. He has\n"\
+  "tried for so long to destroy you, and he\n"\
+  "has lost every single time. His only\n"\
+  "option is to flood Earth with demons\n"\
+  "and hope you go down fighting.\n"\
   "\n"\
-  "After mopping up the place with your\n"\
-  "arsenal, you're ready to face the more\n"\
-  "advanced demons that were sent to Earth.\n"\
-  "\n"\
-  "Lock and load. Rip and tear."
+  "Prepare for HELLION!"
 
 
 // after level 6, put this:
