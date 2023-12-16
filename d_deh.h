@@ -345,6 +345,25 @@ extern char *s_HUSTR_E5M8; // = HUSTR_E5M8;
 //#define HUSTR_E5M9    "E5M9: Realm of Iblis";
 extern char *s_HUSTR_E5M9; // = HUSTR_E5M9;
 
+//#define HUSTR_E6M1    "E5M1: Baphomet's Demesne";
+extern char *s_HUSTR_E6M1; // = HUSTR_E6M1;
+//#define HUSTR_E6M2    "E5M2: Sheol";
+extern char *s_HUSTR_E6M2; // = HUSTR_E6M2;
+//#define HUSTR_E6M3    "E5M3: Cages of the Damned";
+extern char *s_HUSTR_E6M3; // = HUSTR_E6M3;
+//#define HUSTR_E6M4    "E5M4: Paths of Wretchedness";
+extern char *s_HUSTR_E6M4; // = HUSTR_E6M4;
+//#define HUSTR_E6M5    "E5M5: Abaddon's Void";
+extern char *s_HUSTR_E6M5; // = HUSTR_E6M5;
+//#define HUSTR_E6M6    "E5M6: Unspeakable Persecution";
+extern char *s_HUSTR_E6M6; // = HUSTR_E6M6;
+//#define HUSTR_E6M7    "E5M7: Nightmare Underworld";
+extern char *s_HUSTR_E6M7; // = HUSTR_E6M7;
+//#define HUSTR_E6M8    "E5M8: Halls of Perdition";
+extern char *s_HUSTR_E6M8; // = HUSTR_E6M8;
+//#define HUSTR_E6M9    "E5M9: Realm of Iblis";
+extern char *s_HUSTR_E6M9; // = HUSTR_E6M9;
+
 //#define HUSTR_1       "level 1: entryway"
 extern char *s_HUSTR_1; // = HUSTR_1;
 //#define HUSTR_2       "level 2: underhalls"
@@ -821,6 +840,18 @@ extern char *s_E4TEXT; // = E4TEXT;
 //"Lock and load. Rip and tear."
 extern char *s_E5TEXT; // = E5TEXT;
 
+//#define E6TEXT 
+//"Baphomet was only doing Satan's bidding\n"
+//"by bringing you back to Hell. Somehow they\n"
+//"didn't understand that you're the reason\n"
+//"they failed in the first place.\n"
+//"\n"
+//"After mopping up the place with your\n"
+//"arsenal, you're ready to face the more\n"
+//"advanced demons that were sent to Earth.\n"
+//"\n"
+//"Lock and load. Rip and tear."
+extern char *s_E6TEXT; // = E6TEXT;
 
 // after level 6, put this:
 
@@ -1157,6 +1188,9 @@ extern char *bgflatE3;
 extern char *bgflatE4;
 // char*        bgflatE5 = "FLOOR7_2";
 extern char *bgflatE5;
+
+// char*        bgflatE6 = "FLOOR7_2";
+extern char *bgflatE6;
 
 // char*        bgflat06 = "SLIME16";
 extern char *bgflat06;

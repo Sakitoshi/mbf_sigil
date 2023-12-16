@@ -888,6 +888,9 @@ static void G_DoCompleted(void)
               case 5:
                 wminfo.next = 6;
                 break;
+              case 6:
+                wminfo.next = 7;
+                break;
               }
           }
         else
@@ -2042,8 +2045,8 @@ void G_InitNew(skill_t skill, int episode, int map)
 
   if (gamemode == retail)
     {
-      if (episode > 5)
-        episode = 5;
+      if (episode > 6)
+        episode = 6;
     }
   else
     if (gamemode == shareware)

@@ -109,6 +109,10 @@ void F_StartFinale (void)
              finaleflat = bgflatE5;
              finaletext = s_E5TEXT;
              break;
+        case 6:
+             finaleflat = bgflatE6;
+             finaletext = s_E6TEXT;
+             break;
         default:
              // Ouch.
              break;
@@ -737,6 +741,10 @@ void F_Drawer (void)
              W_CacheLumpName("ENDPIC",PU_CACHE));
            break;
       case 5:
+           V_DrawPatch (0,0,0,
+             W_CacheLumpName("SIGILEND",PU_CACHE));
+           break;
+      case 6:
            V_DrawPatch (0,0,0,
              W_CacheLumpName("SIGILEND",PU_CACHE));
            break;

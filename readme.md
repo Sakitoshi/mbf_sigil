@@ -18,13 +18,15 @@ I got the source code from [here](https://www.vogons.org/viewtopic.php?f=24&t=40
 - Clone this repo
 - Unzip djgpp into a new folder in your checkout called `djgpp` such that gcc is at `djgpp/djgpp/bin/gcc.exe`
 - Unzip the allegro 3.0 sources to a new folder in your checkout called `allegro`
-- Run `./build.sh allegro` which will run dosbox for you with the right settings (current folder mounted as `c:\`) and build allegro. You can close dosbox when it's done.
-- Then you can `./build.sh mbf` to build MBF. You can close dosbox when it's done.
+- Run `./build.sh allegro` which will run dosbox for you with the right settings (current folder mounted as `c:\`) and build allegro.
+- Then you can `./build.sh mbf` to build MBF.
 
 #### Changes
+- Added full support for episode 6: Sigil II
 - Added full support for episode 5: Sigil.
 - Sound card settings are read from allegro.cfg again.
 
 #### Important notes
 - You need to use The Ultimate Doom wad (named DOOM.WAD or DOOMU.WAD).
 - SIGIL_SHREDS.WAD is not supported for obvious reasons (no mp3 playback).
+- To play Sigil II, you need to also load Sigil (`-iwad doom.wad -file sigil.wad -file sigil2.wad`).

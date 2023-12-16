@@ -69,8 +69,8 @@ extern  int screenblocks;     // killough 11/98
 extern GameMode_t gamemode;
 extern GameMission_t  gamemission;
 
-// Set if homebrew PWAD stuff has been added.
-extern  boolean modifiedgame;
+// Set if homebrew PWAD stuff has been added to the number of PWADs requested.
+extern  int modifiedgame;
 
 // compatibility with old engines (monster behavior, metrics, etc.)
 extern int compatibility, default_compatibility;          // killough 1/31/98

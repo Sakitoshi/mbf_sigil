@@ -610,6 +610,7 @@ enum
   ep3,
   ep4,
   ep5,
+  ep6,
   ep_end
 } episodes_e;
 
@@ -621,7 +622,8 @@ menuitem_t EpisodeMenu[]=
   {1,"M_EPI2", M_Episode,'t'},
   {1,"M_EPI3", M_Episode,'i'},
   {1,"M_EPI4", M_Episode,'t'},
-  {1,"M_EPI5", M_Episode,'s'}
+  {1,"M_EPI5", M_Episode,'s'},
+  {1,"M_EPI6", M_Episode,'s'}
 };
 
 menu_t EpiDef =
@@ -5649,7 +5651,7 @@ void M_Init(void)
         ReadMenu1[0].routine = M_FinishReadThis;
         }
       // Check until which episode are there maps available
-      for(EpiDef.numitems = 0; EpiDef.numitems < 5; EpiDef.numitems++) {
+      for(EpiDef.numitems = 0; EpiDef.numitems < 6; EpiDef.numitems++) {
         char mapname[9];
         sprintf(mapname, "E%uM1", EpiDef.numitems + 1);
         if (W_CheckNumForName(mapname) == -1) {

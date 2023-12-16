@@ -1183,7 +1183,7 @@ void D_DoomMain(void)
 
   IdentifyVersion();
 
-  modifiedgame = false;
+  modifiedgame = 0;
 
   // killough 10/98: process all command-line DEH's first
   D_ProcessDehCommandLine(); 
@@ -1243,7 +1243,8 @@ void D_DoomMain(void)
       // until end of parms or another - preceded parm
       // killough 11/98: allow multiple -file parameters
 
-      boolean file = modifiedgame = true;            // homebrew levels
+      boolean file = true;            // homebrew levels
+      modifiedgame++;
       while (++p < myargc)
 	{
 	  if (*myargv[p] == '-')

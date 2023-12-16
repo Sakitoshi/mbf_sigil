@@ -1804,7 +1804,7 @@ void WI_DrawBackground(void)
     sprintf(name, "WIMAP%d", wbs->epsd);
 
   if (W_CheckNumForName(name) == -1) {
-    if ((wbs->epsd == 4) && (W_CheckNumForName("SIGILINT") != -1))
+    if ((wbs->epsd == 4 || wbs->epsd == 5) && (W_CheckNumForName("SIGILINT") != -1))
       // SIGIL support
       strcpy(name, "SIGILINT");
     else
