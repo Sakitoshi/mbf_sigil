@@ -118,6 +118,8 @@ boolean menuactive;    // The menus are up
 
 #define SKULLXOFF  -32
 #define LINEHEIGHT  16
+#define EP_SIGIL_LINEHEIGHT 19
+#define EP_SIGIL2_LINEHEIGHT 20
 
 char savegamestrings[10][SAVESTRINGSIZE];
 
@@ -5378,19 +5380,26 @@ void M_Drawer (void)
 	
 	for (i=0;i<max;i++)
 	  {
-	    if (currentMenu->menuitems[i].name[0])
-	      V_DrawPatchDirect(x,y,0,
-				W_CacheLumpName(currentMenu->menuitems[i].name,
-						PU_CACHE));
-	    y += LINEHEIGHT;
-	  }
-	
-	// DRAW SKULL
+			int lineh = LINEHEIGHT;
 
-	V_DrawPatchDirect(x + SKULLXOFF,
-			  currentMenu->y - 5 + itemOn*LINEHEIGHT,0,
-			  W_CacheLumpName(skullName[whichSkull],PU_CACHE));
-      }
+			if (itemOn == i)
+			{
+				// DRAW SKULL
+				V_DrawPatchDirect(x + SKULLXOFF,y - 5,0,
+					W_CacheLumpName(skullName[whichSkull],PU_CACHE));
+			}
+
+			if (currentMenu->menuitems[i].name[0])
+			{
+				patch_t* itemPatch = W_CacheLumpName(currentMenu->menuitems[i].name,
+					PU_CACHE);
+				V_DrawPatchDirect(x,y,0,itemPatch);
+				// accomodate non-standard height episode items
+				lineh = currentMenu == &EpiDef ? itemPatch->height + 2 : LINEHEIGHT;
+			}
+			y += lineh;
+		}
+	}
 }
 
 //
