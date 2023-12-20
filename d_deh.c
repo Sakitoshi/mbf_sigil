@@ -225,6 +225,15 @@ char *s_HUSTR_E5M6  = HUSTR_E5M6;
 char *s_HUSTR_E5M7  = HUSTR_E5M7;
 char *s_HUSTR_E5M8  = HUSTR_E5M8;
 char *s_HUSTR_E5M9  = HUSTR_E5M9;
+char *s_HUSTR_E6M1  = HUSTR_E6M1;
+char *s_HUSTR_E6M2  = HUSTR_E6M2;
+char *s_HUSTR_E6M3  = HUSTR_E6M3;
+char *s_HUSTR_E6M4  = HUSTR_E6M4;
+char *s_HUSTR_E6M5  = HUSTR_E6M5;
+char *s_HUSTR_E6M6  = HUSTR_E6M6;
+char *s_HUSTR_E6M7  = HUSTR_E6M7;
+char *s_HUSTR_E6M8  = HUSTR_E6M8;
+char *s_HUSTR_E6M9  = HUSTR_E6M9;
 char *s_HUSTR_1     = HUSTR_1;
 char *s_HUSTR_2     = HUSTR_2;
 char *s_HUSTR_3     = HUSTR_3;
@@ -400,6 +409,7 @@ char *s_E2TEXT     = E2TEXT;
 char *s_E3TEXT     = E3TEXT;
 char *s_E4TEXT     = E4TEXT;
 char *s_E5TEXT     = E5TEXT;
+char *s_E6TEXT     = E6TEXT;
 char *s_C1TEXT     = C1TEXT;
 char *s_C2TEXT     = C2TEXT;
 char *s_C3TEXT     = C3TEXT;
@@ -444,6 +454,7 @@ char* bgflatE2     = "SFLR6_1";  // end of DOOM Episode 2
 char* bgflatE3     = "MFLR8_4";  // end of DOOM Episode 3
 char* bgflatE4     = "MFLR8_3";  // end of DOOM Episode 4
 char* bgflatE5     = "FLOOR7_2"; // end of DOOM Episode 5 (Sigil)
+char* bgflatE6     = "FLOOR7_2"; // end of DOOM Episode 6 (Sigil II)
 char* bgflat06     = "SLIME16";  // DOOM2 after MAP06
 char* bgflat11     = "RROCK14";  // DOOM2 after MAP11
 char* bgflat20     = "RROCK07";  // DOOM2 after MAP20
@@ -602,6 +613,15 @@ deh_strs deh_strlookup[] = {
   {&s_HUSTR_E5M7,"HUSTR_E5M7"},
   {&s_HUSTR_E5M8,"HUSTR_E5M8"},
   {&s_HUSTR_E5M9,"HUSTR_E5M9"},
+  {&s_HUSTR_E6M1,"HUSTR_E6M1"},
+  {&s_HUSTR_E6M2,"HUSTR_E6M2"},
+  {&s_HUSTR_E6M3,"HUSTR_E6M3"},
+  {&s_HUSTR_E6M4,"HUSTR_E6M4"},
+  {&s_HUSTR_E6M5,"HUSTR_E6M5"},
+  {&s_HUSTR_E6M6,"HUSTR_E6M6"},
+  {&s_HUSTR_E6M7,"HUSTR_E6M7"},
+  {&s_HUSTR_E6M8,"HUSTR_E6M8"},
+  {&s_HUSTR_E6M9,"HUSTR_E6M9"},
   {&s_HUSTR_1,"HUSTR_1"},
   {&s_HUSTR_2,"HUSTR_2"},
   {&s_HUSTR_3,"HUSTR_3"},
@@ -777,6 +797,7 @@ deh_strs deh_strlookup[] = {
   {&s_E3TEXT,"E3TEXT"},
   {&s_E4TEXT,"E4TEXT"},
   {&s_E5TEXT,"E5TEXT"},
+  {&s_E6TEXT,"E6TEXT"},
   {&s_C1TEXT,"C1TEXT"},
   {&s_C2TEXT,"C2TEXT"},
   {&s_C3TEXT,"C3TEXT"},
@@ -819,6 +840,7 @@ deh_strs deh_strlookup[] = {
   {&bgflatE3,"BGFLATE3"},
   {&bgflatE4,"BGFLATE4"},
   {&bgflatE5,"BGFLATE5"},
+  {&bgflatE6,"BGFLATE6"},
   {&bgflat06,"BGFLAT06"},
   {&bgflat11,"BGFLAT11"},
   {&bgflat20,"BGFLAT20"},
@@ -892,6 +914,16 @@ char **mapnames[] =  // DOOM shareware/registered/retail (Ultimate)/Sigil names.
   &s_HUSTR_E5M7,
   &s_HUSTR_E5M8,
   &s_HUSTR_E5M9,
+
+  &s_HUSTR_E6M1,
+  &s_HUSTR_E6M2,
+  &s_HUSTR_E6M3,
+  &s_HUSTR_E6M4,
+  &s_HUSTR_E6M5,
+  &s_HUSTR_E6M6,
+  &s_HUSTR_E6M7,
+  &s_HUSTR_E6M8,
+  &s_HUSTR_E6M9,
 
   &deh_newlevel,  // spares?  Unused.
   &deh_newlevel,
@@ -2300,7 +2332,7 @@ void deh_procPars(DEHFILE *fpin, FILE* fpout, char *line) // extension
           // Note that episode 4 does not have par times per original design
           // in Ultimate DOOM so that is not supported here.
           // Sakitoshi 2019 updated to allow custom par times for episode 4 and sigil.
-          if (episode < 1 || episode > 5 || level < 1 || level > 9)
+          if (episode < 1 || episode > 6 || level < 1 || level > 9)
             {
               if (fpout) fprintf(fpout,
                                  "Invalid ExMx values E%dM%d\n",episode, level);

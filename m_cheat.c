@@ -448,7 +448,7 @@ char buf[3];
 
   // Catch invalid maps.
   if (epsd < 1 || map < 1 ||   // Ohmygod - this is not going to work.
-      (gamemode == retail     && (epsd > 4 + modifiedgame || map > 9  )) || // allow fifth episode if pwad detected for sigil.
+      (gamemode == retail     && (epsd > 4 + modifiedgame || map > 9  )) || // allow 1 extra episode per pwad (needed for sigil (ep5) & sigil II (ep6))
       (gamemode == registered && (epsd > 3 || map > 9  )) ||
       (gamemode == shareware  && (epsd > 1 || map > 9  )) ||
       (gamemode == commercial && (epsd > 1 || map > 32 )) ||

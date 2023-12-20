@@ -1,2 +1,11 @@
-obj/
+obj/**
+OBJ/**
 mbf.exe
+MBF.EXE
+djgpp/**
+allegro/**
+DOOM.WAD
+DOOM2.WAD
+SIGIL.WAD
+SIGIL_C.WAD
+SIGIL2.WAD

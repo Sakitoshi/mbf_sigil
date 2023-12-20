@@ -2206,6 +2206,10 @@ void A_BossDeath(mobj_t *mo)
           return;
           break;
 
+        case 6: // sigil II
+          return;
+          break;
+
         default:
           if (gamemap != 8)
             return;

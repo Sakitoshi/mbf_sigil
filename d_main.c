@@ -408,7 +408,7 @@ static void D_DrawTitle1(char *name)
 {
   S_StartMusic(mus_intro);
   pagetic = (TICRATE*170)/35;
-  if (W_CheckNumForName("SIGILINT") != -1) // Sakitoshi 2019: if Sigil detected, wait for the title theme to end.
+  if (W_CheckNumForName("SIGILINT") != -1 || W_CheckNumForName("SIGILIN2") != -1) // Sakitoshi 2019: if Sigil detected, wait for the title theme to end.
     pagetic = (TICRATE*404)/35;
   D_SetPageName(name);
 }
@@ -1183,7 +1183,7 @@ void D_DoomMain(void)
 
   IdentifyVersion();
 
-  modifiedgame = false;
+  modifiedgame = 0;
 
   // killough 10/98: process all command-line DEH's first
   D_ProcessDehCommandLine(); 
@@ -1243,7 +1243,7 @@ void D_DoomMain(void)
       // until end of parms or another - preceded parm
       // killough 11/98: allow multiple -file parameters
 
-      boolean file = modifiedgame = true;            // homebrew levels
+      boolean file = true;            // homebrew levels
       while (++p < myargc)
 	{
 	  if (*myargv[p] == '-')
@@ -1253,7 +1253,8 @@ void D_DoomMain(void)
           struct stat sbuf; // Sakitoshi 2019, required to check the new mission packs
           char *pwad = AddDefaultExtension(myargv[p],".wad");
           unsigned int crcpwad;
-	      D_AddFile(myargv[p]);
+          D_AddFile(myargv[p]);
+          modifiedgame++;
           if ((!strnicmp(pwad,"nerve.wad",9) && !stat(pwad,&sbuf) && sbuf.st_size == 3819855) ||
               (!strnicmp(pwad,"nrftl.wad",9) && !stat(pwad,&sbuf) && sbuf.st_size == 3954644))
             {

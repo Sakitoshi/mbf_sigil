@@ -37,9 +37,9 @@ LDFLAGS_DEBUG =
 # CFLAGS_RELEASE =-O1 -ffast-math -fomit-frame-pointer -mtune=i486 -Wno-pointer-sign
 
 # CFLAGS_RELEASE = -O3 -ffast-math -m486
-CFLAGS_RELEASE = -O3 -ffast-math -m486 -DRANGECHECK
+# CFLAGS_RELEASE = -O3 -ffast-math -m486 -DRANGECHECK
 # CFLAGS_RELEASE = -O1 -ffast-math -mtune=i486 -Wno-pointer-sign -fexpensive-optimizations
- 
+CFLAGS_RELEASE = -O3 -ffast-math -fomit-frame-pointer  -fstrength-reduce -m486 -fexpensive-optimizations
 
 # GCC 2.7: -ffast-math makes no difference
 # GCC 2.7: -fomit-frame-pointer gives a few FPS less 

@@ -118,6 +118,8 @@ boolean menuactive;    // The menus are up
 
 #define SKULLXOFF  -32
 #define LINEHEIGHT  16
+#define EP_SIGIL_LINEHEIGHT 19
+#define EP_SIGIL2_LINEHEIGHT 20
 
 char savegamestrings[10][SAVESTRINGSIZE];
 
@@ -599,7 +601,7 @@ void M_DrawReadThis2(void)
 
 //
 // episodes_e provides numbers for the episode menu items. The default is
-// now 5, to accomodate Sigil. If the user is running anything else,
+// now 6, to accomodate Sigil & Sigil II. If the user is running anything else,
 // this is accounted for in the code.
 //
 
@@ -610,6 +612,7 @@ enum
   ep3,
   ep4,
   ep5,
+  ep6,
   ep_end
 } episodes_e;
 
@@ -621,7 +624,8 @@ menuitem_t EpisodeMenu[]=
   {1,"M_EPI2", M_Episode,'t'},
   {1,"M_EPI3", M_Episode,'i'},
   {1,"M_EPI4", M_Episode,'t'},
-  {1,"M_EPI5", M_Episode,'s'}
+  {1,"M_EPI5", M_Episode,'s'},
+  {1,"M_EPI6", M_Episode,'s'}
 };
 
 menu_t EpiDef =
@@ -5376,19 +5380,26 @@ void M_Drawer (void)
 	
 	for (i=0;i<max;i++)
 	  {
-	    if (currentMenu->menuitems[i].name[0])
-	      V_DrawPatchDirect(x,y,0,
-				W_CacheLumpName(currentMenu->menuitems[i].name,
-						PU_CACHE));
-	    y += LINEHEIGHT;
-	  }
-	
-	// DRAW SKULL
+			int lineh = LINEHEIGHT;
 
-	V_DrawPatchDirect(x + SKULLXOFF,
-			  currentMenu->y - 5 + itemOn*LINEHEIGHT,0,
-			  W_CacheLumpName(skullName[whichSkull],PU_CACHE));
-      }
+			if (itemOn == i)
+			{
+				// DRAW SKULL
+				V_DrawPatchDirect(x + SKULLXOFF,y - 5,0,
+					W_CacheLumpName(skullName[whichSkull],PU_CACHE));
+			}
+
+			if (currentMenu->menuitems[i].name[0])
+			{
+				patch_t* itemPatch = W_CacheLumpName(currentMenu->menuitems[i].name,
+					PU_CACHE);
+				V_DrawPatchDirect(x,y,0,itemPatch);
+				// accomodate non-standard height episode items
+				lineh = currentMenu == &EpiDef ? itemPatch->height + 2 : LINEHEIGHT;
+			}
+			y += lineh;
+		}
+	}
 }
 
 //
@@ -5649,7 +5660,7 @@ void M_Init(void)
         ReadMenu1[0].routine = M_FinishReadThis;
         }
       // Check until which episode are there maps available
-      for(EpiDef.numitems = 0; EpiDef.numitems < 5; EpiDef.numitems++) {
+      for(EpiDef.numitems = 0; EpiDef.numitems < 6; EpiDef.numitems++) {
         char mapname[9];
         sprintf(mapname, "E%uM1", EpiDef.numitems + 1);
         if (W_CheckNumForName(mapname) == -1) {

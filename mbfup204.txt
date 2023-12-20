@@ -210,3 +210,6 @@ Upload no. 019: 2017-09-10
 2019:
 - Added full support for episode 5: Sigil.
 - Sound card settings are read from allegro.cfg again.
+
+2023:
+- Added full support for episode 6: Sigil II.

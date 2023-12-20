@@ -36,8 +36,8 @@ GameMission_t   gamemission = doom;
 // Language.
 Language_t   language = english;
 
-// Set if homebrew PWAD stuff has been added.
-boolean modifiedgame;
+// Set if homebrew PWAD stuff has been added to the number of PWADs requested.
+int modifiedgame;
 
 //-----------------------------------------------------------------------------
 
