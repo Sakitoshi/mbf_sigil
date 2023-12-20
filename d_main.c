@@ -1244,7 +1244,6 @@ void D_DoomMain(void)
       // killough 11/98: allow multiple -file parameters
 
       boolean file = true;            // homebrew levels
-      modifiedgame++;
       while (++p < myargc)
 	{
 	  if (*myargv[p] == '-')
@@ -1254,7 +1253,8 @@ void D_DoomMain(void)
           struct stat sbuf; // Sakitoshi 2019, required to check the new mission packs
           char *pwad = AddDefaultExtension(myargv[p],".wad");
           unsigned int crcpwad;
-	      D_AddFile(myargv[p]);
+          D_AddFile(myargv[p]);
+          modifiedgame++;
           if ((!strnicmp(pwad,"nerve.wad",9) && !stat(pwad,&sbuf) && sbuf.st_size == 3819855) ||
               (!strnicmp(pwad,"nrftl.wad",9) && !stat(pwad,&sbuf) && sbuf.st_size == 3954644))
             {

@@ -1813,13 +1813,14 @@ void G_ScreenShot(void)
 }
 
 // DOOM Par Times
-int pars[6][10] = {
+int pars[7][10] = {
   {0},
   {0,30,75,120,90,165,180,180,30,165},
   {0,90,90,90,120,90,360,240,30,170},
   {0,90,45,90,150,90,90,165,30,135},
   {0}, // Sakitoshi 2019 episode 4 doesn't have pars, better report 0 :)
-  {0}  // also report 0 for episode 5.
+  {0}, // also report 0 for episode 5.
+  {0} // and for episode 6 as well
 };
 
 // DOOM II Par Times
@@ -2045,8 +2046,8 @@ void G_InitNew(skill_t skill, int episode, int map)
 
   if (gamemode == retail)
     {
-      if (episode > 6)
-        episode = 6;
+      if (episode > (4 + modifiedgame))
+        episode = 4 + modifiedgame;
     }
   else
     if (gamemode == shareware)
